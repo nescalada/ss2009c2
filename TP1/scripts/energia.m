@@ -104,6 +104,10 @@ function test2()
 
     plot(x,y,'-b');
 
+    disp('modelo 1');
+    print x(length(x));
+    print y(length(y));
+
     [x,y] = mieuler(@fenemodel2,0, 48, 0, 48);
 
     plot(x,y,'-+g');
@@ -112,6 +116,11 @@ function test2()
 	title('Energia consumida en funcion del tiempo');
 	xlabel('Tiempo (horas)');
 	ylabel('Energia');
+
+    disp('modelo 2')
+    disp('modelo 2');;
+    print x(length(x))
+    print y(length(y))
 
 	print -deps energiatotal.eps
     pause(30);
