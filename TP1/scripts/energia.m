@@ -108,8 +108,8 @@ function test2()
 
     plot(x,y,'-+g');
 
-    %legend('Energia consumida Modelo 1','Energia consumida Modelo 2');
-	title('Energia total consumida');
+    legend('Energia consumida Modelo 1','Energia consumida Modelo 2');
+	title('Energia consumida en funcion del tiempo');
 	xlabel('Tiempo (horas)');
 	ylabel('Energia');
 
@@ -146,12 +146,12 @@ function test()
     endfor
 
 	plot(x,y,'-+g');
-    %legend('Energia consumida Modelo 1','Energia consumida Modelo 2');
-	title('Energia consumida');
+    legend('Energia consumida Modelo 1','Energia consumida Modelo 2');
+	title('Energia total consumida en funcion del tiempo');
 	xlabel('Tiempo (horas)');
 	ylabel('Energia');
     print -deps energia.eps
 	pause(20);
 endfunction
 
-test2();
+test();
