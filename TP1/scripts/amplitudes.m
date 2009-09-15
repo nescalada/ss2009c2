@@ -66,13 +66,15 @@ function test()
 	        K = i;
 
 		%Modelo 1		
-		[t,x]=rungekutta(@f21,0,48,10,60*48);
-		am1(indice)=max(x)-min(x);
+		[t,x1]=rungekutta(@f21,0,48,10,60*48);
+		auxmod1=x1(10*60:48*60);%Tomo los valores del estado estacionario
+		am1(indice)=max(auxmod1)-min(auxmod1);
 
 		%Modelo 2
 		%[t,x]=rk4('f2',[0,48],10);
 		[t2,x2]=rungekutta(@f2,0,48,10,60*48);
-		am2(indice)=max(x2)-min(x2);
+		auxmod2=x2(10*60:48*60);%Tomo los valores del estado estacionario
+		am2(indice)=max(auxmod2)-min(auxmod2);
 		indice=indice+1;
 	endfor
 	axis([0,21,0,18]);
