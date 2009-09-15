@@ -4,6 +4,7 @@
 
 
 \begin{document}
+%TODO: ver por que no anda esto
 %\renewcommand{\figurename}{Figura}
 %\renewcommand{\abstractname}{Resumen}
 %\renewcommand{\refname}{Bibliograf?a}
@@ -48,7 +49,7 @@ edificio. Para llevar a cabo esta tarea resulta fundamental estudiar c\'{o}mo
 var\'{i}a la temperatura en el interior del mismo. Se considera que este sistema 
 din\'{a}mico es continuo y determinista, por lo que puede ser modelado mediante 
 una ecuaci\'{o}n diferencial.
-\ \\
+
 Se presentan dos modelos para este sistema. En ambos casos se establece que
 la temperatura del exterior del edificio en esa \'{e}poca del a\~{n}o
 var\'{i}a de acuerdo a la siguiente ecuaci\'{o}n:
@@ -81,7 +82,8 @@ del edificio var\'{i}a al ritmo dictado por la ecuaci\'{o}n
 
 donde $T_{out}$ representa la temperatura exterior, $T^{*}$ la temperatura
 fijada por un sistema de aire acondicionado y $k$, $k_{u}$ son constantes
-de enfriamiento. \\
+de enfriamiento.
+
 A partir de la ecuaci\'{o}n (\ref{t_primer_modelo}) se observa que existen dos
 factores esenciales para determinar la temperatura en el interior del edificio.
 El t\'{e}rmino que involucra a $k$ indica como se
@@ -119,7 +121,6 @@ Si se reemplaza en (\ref{t_primer_modelo}) se obtiene:
 Reordenando y agrupando se obtiene la expresi\'{o}n dada en (\ref
 {t_primer_modelo_modificada}).
 
-
 \subsubsection{Simulaci\'{o}n}
 
 Se desea estudiar el comportamiento del sistema durante $48$ horas para una
@@ -127,15 +128,9 @@ temperatura deseada $T_{D} = 20^{\circ}$. Se establece
 $k_{u} = 0.70^\circ$  hora$^{-1}$ y se hace variar el coeficiente de transferencia
 $k$ tomando los valores $0.25, 0.5, 1,$
 $2, 5, 10, 15$ y $20$ hora$^{-1}$.
+
 Como temperatura inicial dentro del edificio se toma la media de la temperatura
 exterior.
-
-\begin{figure*}[hp]
-\label{primer_modelo_variar_k}
-\centering
-\includegraphics[scale=.8]{graficos/ej1b}
-\caption{Modelo 1 - temperatura interior al variar $k$}
-\end{figure*}
 
 En la Figura $1$ se observa que la temperatura en 
 el interior del edificio presenta oscilaciones. Adem\'{a}s, dichas oscilaciones
@@ -153,7 +148,9 @@ horas resulta
 E_{1} = \int_{0}^{48} k_{u} | T^{*} - T | dt
 \end{equation}
 
-%TODO: explicar como se resolvio esta integral.
+El resultado arrojado al utilizar el m\'{e}todo de Euler para integrar 
+num\'{e}ricamente la expresi\'{o}n (\ref{energia_primer_modelo}) es un 
+consumo energ\'{e}tico de aproximadamente $130J$.
 
 \subsection{Modelo 2}
 
@@ -182,7 +179,20 @@ deseada en el interior del edificio y la temperatura real del mismo.
 
 \subsubsection{Simulaci\'{o}n}
 
-%TODO simulacion segundo modelo
+En la Figura $2$ se observa el comportamiento
+de la temperatura en el interior del edificio cuando el coeficiente de transferencia
+se fija en $k = 0.25^{\circ}$ hora$^{-1}$.
+
+Se observa que en todo momento se mantiene una temperatura bastante pr\'{o}xima
+a la deseada, sufriendo peque\~{n}as variaciones y presentando una amplitud
+t\'{e}rmica de unos pocos grados cent\'{i}grados.
+
+\begin{figure*}[hp]
+\label{primer_modelo_variar_k}
+\centering
+\includegraphics[scale=.8]{graficos/ej1b}
+\caption{Modelo 1 - temperatura interior al variar $k$}
+\end{figure*}
 
 \begin{figure*}[hp]
 \label{segundo_modelo_k_un_cuarto}
@@ -193,9 +203,32 @@ deseada en el interior del edificio y la temperatura real del mismo.
 
 \subsubsection{Consideraciones energ\'{e}ticas}
 
-%TODO consumo de energia segundo modelo
+La energ\'{i}a consumida para la calefacci\'{o}n del edificio durante $48$ horas
+est\'{a} dada por la siguiente ecuaci\'{o}n:
+
+\begin{equation}
+\label{energia_segundo_modelo}
+E_{2} = \int_{0}^{48} | u | dt
+\end{equation}
+
+La integraci\'{o}n num\'{e}rica de esta expresi\'{o}n por el m\'{e}todo de
+Euler muestra un consumo energ\'{e}tico total de alrededor de $122J$.
 
 \section{Comparaci\'{o}n de resultados}\label{resultados}
+
+En la Figura $3$ se muestra c\'{o}mo var\'{i}a 
+la temperatura en el interior del edificio para ambos modelos. Se observa
+que para valores de $k$ m\'{a}s grandes el Modelo 1 presenta severas
+fluctuaciones de temperatura, mientras que el Modelo 2 mantiene oscilaciones
+de peque\~{n}a amplitud. Cabe destacar que el sistema descripto por el Modelo 2 
+se estabiliza con una mayor velocidad que el dado por el Modelo 1.
+
+\begin{figure*}[hp]
+\label{comparacion_temp_interior}
+\centering
+\includegraphics[scale=1.05]{graficos/ej1c}
+\caption{Comparaci\'{o}n de la temperatura interior}
+\end{figure*}
 
 \begin{figure*}[hp]
 \label{amplitud_termica}
@@ -203,6 +236,11 @@ deseada en el interior del edificio y la temperatura real del mismo.
 \includegraphics[scale=1.05]{graficos/amplitudes}
 \caption{Amplitud t\'{e}rmica}
 \end{figure*}
+
+En lo que respecta al consumo de energ\'{i}a ambos modelos presentan magnitudes
+similares, como se observa en las figuras $5$ y 
+$6$, resultando el consumo de la primera estrategia
+levemente superior.
 
 \begin{figure*}[hp]
 \label{consumo_energia}
@@ -218,10 +256,23 @@ deseada en el interior del edificio y la temperatura real del mismo.
 \caption{Consumo total de energ\'{i}a}
 \end{figure*}
 
-%TODO comparar resultados, consumo de energia y amplitud termica
 
 \section{Conclusiones}\label{conclusiones}
 
-%TODO decir que modelo es el mas confortable y por que (amplitud termica principalmente)
+Existen diversas maneras de modelar un sistema de calefaccionamiento para un
+edificio. Para evaluar las distintas estrategias se deben tener en cuenta
+factores cr\'{i}ticos tales como la amplitud t\'{e}rmica, el consumo
+energ\'{e}tico y el tiempo que el sistema tarda en volverse estable.
+
+En lo que respecta al consumo energ\'{e}tico el primer modelo posee un consumo
+levemente mayor, aunque la proximidad en las magnitudes de ambos modelos
+hace que este par\'{a}metro no resulte crucial para la elecci\'{o}n de uno por sobre
+el otro.
+
+El factor determinante en este caso es la amplitud t\'{e}rmica, que en definitiva
+es la que determinar\'{a} el confort en el interior del edificio. El Modelo 2
+resulta sumamente superior en este aspecto, manteniendo una temperatura muy
+cercana a la deseada en todo momento y alcanzando su estado estacionario
+en un tiempo muy breve.
 
 \end{document}
