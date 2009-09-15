@@ -44,6 +44,8 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage[latin1]{inputenc}
+
 % Need this for accents in Arial/Helvetica
 %\usepackage[T1]{fontenc}  % Gerry March 12, 2007 - causes Type 3 problems (body text)
 %\usepackage{textcomp}
@@ -543,7 +545,7 @@
 \def\fps@figure{tbp}
 \def\ftype@figure{1}
 \def\ext@figure{lof}
-\def\fnum@figure{Figure \thefigure}
+\def\fnum@figure{Figura \thefigure}
 \def\figure{\@float{figure}}
 \let\endfigure\end@float
 \@namedef{figure*}{\@dblfloat{figure}}
@@ -764,13 +766,13 @@
    \color@endgroup} %g}
 \fi
 \setcounter{footnote}{0}
-\section*{ABSTRACT}\normalsize%\ninept
+\section*{RESUMEN}\normalsize%\ninept
 }
 
 \def\endabstract{\if@twocolumn\else\endquotation\fi}
 
 \def\keywords{\if@twocolumn
-\section*{Keywords}
+\section*{Palabras clave}
 \else \small
 \quotation
 \fi}

@@ -1,15 +1,6 @@
 \documentclass{sig-alternate}
-\usepackage[latin1]{inputenc}
-%\usepackage[spanish]{babel}
-
 
 \begin{document}
-%TODO: ver por que no anda esto
-%\renewcommand{\figurename}{Figura}
-%\renewcommand{\abstractname}{Resumen}
-%\renewcommand{\refname}{Bibliograf?a}
-%\renewcommand{\tablename}{Tabla}
-%\renewcommand{\languagename}{}
 
 \title{Buscando la temperatura ideal}
 
@@ -34,7 +25,7 @@
 
 \begin{abstract}
 En este art\'{i}culo se comparan dos modelos alternativos para el 
-calefaccionamiento de un edificio, teniendo en cuenta factores determinantes 
+calefaccionamiento de un edificio, teniendo en cuenta fac\-to\-res determinantes 
 tales como la amplitud t\'{e}rmica y el consumo energ\'{e}tico. Se realizan 
 simulaciones para cada uno de los mismos.
 \end{abstract}
@@ -52,15 +43,15 @@ una ecuaci\'{o}n diferencial.
 
 Se presentan dos modelos para este sistema. En ambos casos se establece que
 la temperatura del exterior del edificio en esa \'{e}poca del a\~{n}o
-var\'{i}a de acuerdo a la siguiente ecuaci\'{o}n:
+var\'{i}a de acuerdo a 
 
 \begin{equation}
 \label{t_exterior}
-T_{out} (t) = 10 - 6 \cos\frac{2 \pi t}{24}
+T_{out} (t) = 10 - 6 \cos\frac{2 \pi t}{24}.
 \end{equation}
 
 En la secci\'{o}n \ref{modelosysimulaciones} se presentan ambos modelos y
-se desarrollan las simulaciones correspondientes.
+se de\-sa\-rro\-llan las simulaciones correspondientes.
 En la secci\'{o}n \ref{resultados} se analizan y contrastan los resultados
 obtenidos en las simulaciones.
 En la secci\'{o}n \ref{conclusiones} se establecen las conclusiones y se
@@ -100,20 +91,20 @@ k ( \overline{T}_{out} - T_{D})
 \end{equation}
 para una temperatura interior deseada $T_{D}$,
 donde $\overline{T}_{out}$ es la temperatura exterior media, entonces la
-ecuaci\'{o}n (\ref{t_primer_modelo}) puede escribirse de la siguiente manera:
+ecuaci\'{o}n (\ref{t_primer_modelo}) puede escribirse de la siguiente manera
 
 \begin{equation}
 \label{t_primer_modelo_modificada}
 \frac{dT}{dt} = k ( T_{out} - \overline{T}_{out} ) + ( k + k_{u} ) ( T_{D} - T )
 \end{equation}
 
-Partiendo de la ecuaci\'{o}n (\ref{t_fijada}) se establece la igualdad:
+Partiendo de la ecuaci\'{o}n (\ref{t_fijada}) se establece la igualdad
 
 \begin{equation}
 T^{*}=\frac{-k\left(\bar{T}_{out}-T_{D}\right)}{k_{u}}+T_{D}
 \end{equation} 
  
-Si se reemplaza en (\ref{t_primer_modelo}) se obtiene:
+que al reemplazarse en (\ref{t_primer_modelo}) da por resultado la expresi\'{o}n
 \begin{equation}
 \frac{dT}{dt}=k(T_{out}-T)+k_{u}\left(\frac{-k\left(\bar{T}_{out}-T_{D}\right)}{k_{u}}+T_{D}-T\right)
 \end{equation}
@@ -124,18 +115,18 @@ Reordenando y agrupando se obtiene la expresi\'{o}n dada en (\ref
 \subsubsection{Simulaci\'{o}n}
 
 Se desea estudiar el comportamiento del sistema durante $48$ horas para una
-temperatura deseada $T_{D} = 20^{\circ}$. Se establece
+tem\-pe\-ra\-tu\-ra deseada $T_{D} = 20^{\circ}$. Se establece
 $k_{u} = 0.70^\circ$  hora$^{-1}$ y se hace variar el coeficiente de transferencia
 $k$ tomando los valores $0.25, 0.5, 1,$
 $2, 5, 10, 15$ y $20$ hora$^{-1}$.
 
-Como temperatura inicial dentro del edificio se toma la media de la temperatura
-exterior.
+Como temperatura inicial dentro del edificio se toma la media de la
+tem\-pe\-ra\-tu\-ra exterior.
 
 En la Figura $1$ se observa que la temperatura en 
 el interior del edificio presenta oscilaciones. Adem\'{a}s, dichas oscilaciones
 aumentan su amplitud a medida que se incrementa el coeficiente $k$, indicando
-que la influencia de la temperatura exterior se hace mayor hasta
+que la influencia de la tem\-pe\-ra\-tu\-ra exterior se hace mayor hasta
 gobernar por completo la temperatura del interior del edificio.
 
 \subsubsection{Consideraciones energ\'{e}ticas}
@@ -150,14 +141,14 @@ E_{1} = \int_{0}^{48} k_{u} | T^{*} - T | dt
 
 El resultado arrojado al utilizar el m\'{e}todo de Euler para integrar 
 num\'{e}ricamente la expresi\'{o}n (\ref{energia_primer_modelo}) es un 
-consumo energ\'{e}tico de aproximadamente $130J$.
+consumo e\-ner\-g\'{e}\-ti\-co de aproximadamente $130J$.
 
 \subsection{Modelo 2}
 
 \subsubsection{Descripci\'{o}n}
 
-Como segunda alternativa se propone un modelo m\'{a}s realista, dado por la
-siguiente ecuaci\'{o}n:
+Como segunda alternativa se propone un modelo m\'{a}s realista,
+dado por
 
 \begin{equation}
 \label{segundo_modelo}
@@ -204,7 +195,7 @@ t\'{e}rmica de unos pocos grados cent\'{i}grados.
 \subsubsection{Consideraciones energ\'{e}ticas}
 
 La energ\'{i}a consumida para la calefacci\'{o}n del edificio durante $48$ horas
-est\'{a} dada por la siguiente ecuaci\'{o}n:
+est\'{a} dada por
 
 \begin{equation}
 \label{energia_segundo_modelo}
@@ -218,7 +209,7 @@ Euler muestra un consumo energ\'{e}tico total de alrededor de $122J$.
 
 En la Figura $3$ se muestra c\'{o}mo var\'{i}a 
 la temperatura en el interior del edificio para ambos modelos. Se observa
-que para valores de $k$ m\'{a}s grandes el Modelo 1 presenta severas
+que para valores de $k$ m\'{a}s grandes el Modelo 1 presenta se\-ve\-ras
 fluctuaciones de temperatura, mientras que el Modelo 2 mantiene oscilaciones
 de peque\~{n}a amplitud. Cabe destacar que el sistema descripto por el Modelo 2 
 se estabiliza con una mayor velocidad que el dado por el Modelo 1.
@@ -237,8 +228,8 @@ se estabiliza con una mayor velocidad que el dado por el Modelo 1.
 \caption{Amplitud t\'{e}rmica}
 \end{figure*}
 
-En lo que respecta al consumo de energ\'{i}a ambos modelos presentan magnitudes
-similares, como se observa en las figuras $5$ y 
+En lo que respecta al consumo de energ\'{i}a ambos modelos presentan
+magnitudes similares, como se observa en las fi\-gu\-ras $5$ y 
 $6$, resultando el consumo de la primera estrategia
 levemente superior.
 
@@ -264,8 +255,8 @@ edificio. Para evaluar las distintas estrategias se deben tener en cuenta
 factores cr\'{i}ticos tales como la amplitud t\'{e}rmica, el consumo
 energ\'{e}tico y el tiempo que el sistema tarda en volverse estable.
 
-En lo que respecta al consumo energ\'{e}tico el primer modelo posee un consumo
-levemente mayor, aunque la proximidad en las magnitudes de ambos modelos
+En lo que respecta al consumo energ\'{e}tico el primer mo\-de\-lo posee un consumo
+levemente mayor, aunque la pro\-xi\-mi\-dad en las magnitudes de ambos modelos
 hace que este par\'{a}metro no resulte crucial para la elecci\'{o}n de uno por sobre
 el otro.
 
