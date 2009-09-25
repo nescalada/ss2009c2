@@ -104,12 +104,20 @@ for q = 1 : n-1
     x2(q+1)=x2(q)+(1/6)*(k21+2*k22+2*k23+k24);
 end
 hold on;
+
 plot(t,x1uno,'b-');
-legend('0.0001');
+
+
 plot(t,x1dos,'b-');
-legend('0.001');
+
+
 plot(t,x1tres,'b-');
-legend('0.01');
+
+
+aux=t*0.01;
+plot(t,aux,'b-');
+legend('K=0.0001','K=0.001','K=0.01','Blanco');
+
 xlabel('Tiempo');
 ylabel('Angulo');
 print -deps ej1c.eps
