@@ -105,6 +105,8 @@ for q = 1 : n-1
 end
 hold on;
 
+axis([0,350,0,3.99]);
+
 plot(t,x1uno,'b-');
 
 
@@ -118,6 +120,6 @@ aux=t*0.01;
 plot(t,aux,'b-');
 legend('K=0.0001','K=0.001','K=0.01','Blanco');
 
-xlabel('Tiempo');
-ylabel('Angulo');
+xlabel('Tiempo(segundos)');
+ylabel('Angulo(radianes)');
 print -deps mProporcional.eps
