@@ -39,10 +39,30 @@ posici\'{o}n  seg\'{u}n corresponda. Para esto se incluye un controlador que
 compara el \'{a}ngulo de la antena con el \'{a}ngulo en donde se encuentra el 
 objetivo y proporciona el torque correspondiente para minimizar la discrepancia 
 entre ambos.
-%TODO: decir que hay en cada seccion
+
+En la secci\'{o}n \ref{modelo} se describe el modelo del sistema. En la
+secci\'{o}n \ref{simulaciones} se realizan las simulaciones correspondientes
+a los tres tipos de controladores utilizados: proporcional, integral y 
+derivativo. Por \'{u}ltimo, se exponen las conclusiones en la secci\'{o}n
+\ref{conclusiones}.
 
 \section{Modelo}\label{modelo}
-%TODO: explicar modelo
+La din\'{a}mica de la antena se modela seg\'{u}n la ecuaci\'{o}n diferencial:
+\begin{equation}
+\label{dinamica_antena}
+I \ddot\theta = - b \dot\theta + u(t)
+\end{equation}
+donde $\theta$ es el \'{a}ngulo que corresponde a la direcci\'{o}n en la que
+apunta el radar, $I$ es el momento de inercia de la antena y $b$ es una 
+constante positiva que vincula la fuerza viscosa que act\'{u}a sobre la antena.
+El torque que producen los motores sobre la antena est\'{a} representado por 
+la funci\'{o}n $u$.
+
+Se desea que el sistema sea a lazo cerrado. Para esto se mide el \'{a}ngulo
+$\theta$ de la antena y se lo compara con el \'{a}ngulo $\theta_{R}$ que marca
+la ubicaci\'{o}n real del objetivo. La diferencia entre ambos constituye una
+se\~{n}al de error $e(t) = \theta_{R}(t) - \theta(t)$ que se ingresa nuevamente 
+al controlador.
 
 \section{Simulaciones}\label{simulaciones}
 %TODO: explicar simulaciones
@@ -52,9 +72,6 @@ entre ambos.
 \subsection{Controlador integral}\label{integral}
 
 \subsection{Controlador derivativo}\label{derivativo}
-
-\section{Comparaci\'{o}n de resultados}\label{resultados}
-%TODO: comparar resultados, quizas vuela despues...
 
 \section{Conclusiones}\label{conclusiones}
 %TODO: conclusiones buena onda
