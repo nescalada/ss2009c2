@@ -25,8 +25,8 @@
 
 \begin{abstract}
 En este art\'{i}culo se modela un sistema de seguimiento de blancos a lazo 
-cerrado. Se analiza como influyen los distintos tipos de controladores: 
-proporcional, integral y derivativo.
+cerrado. Se analiza el comportamiento del sistema con distintos tipos de \
+controladores: proporcional, integral y derivativo.
 \end{abstract}
 
 \keywords{Seguimiento de blancos, sistema de control, controlador proporcional,
@@ -65,15 +65,69 @@ se\~{n}al de error $e(t) = \theta_{R}(t) - \theta(t)$ que se ingresa nuevamente
 al controlador.
 
 \section{Simulaciones}\label{simulaciones}
-%TODO: explicar simulaciones
+Para realizar la simulaci\'{o}n se consideran los par\'{a}metros 
+$I = 0.004\ kg\ m^{2}$ y $b = 0.02\ kg\  m^{2}\ s^{-1}$. Tambi\'{e}n se establece
+que el blanco se mueve de acuerdo a $\theta_{R}(t) = 0.01 t$.
+Se estudian tres tipos de controladores: proporcional, integral y derivativo.
+En todos los casos se utiliza el m\'{e}todo de Runge-Kutta de orden $4$ para
+la resoluci\'{o}n num\'{e}rica de las ecuaciones diferenciales.
 
 \subsection{Controlador proporcional}\label{proporcional}
+%TODO: explicar modelo proporcional
 
 \subsection{Controlador integral}\label{integral}
+%TODO: explicar modelo integral
 
 \subsection{Controlador derivativo}\label{derivativo}
+%TODO: explicar modelo derivativo
 
 \section{Conclusiones}\label{conclusiones}
-%TODO: conclusiones buena onda
+A partir de las simulaciones se observa que el controlador proporcional es el
+m\'{a}s estable y preciso de los tres controladores analizados. El
+controlador integral resulta sumamente inestable, presentando oscilaciones
+que aumentan su amplitud con el paso del tiempo. Para determinados casos puede
+utilizarse un controlador derivativo, aunque depender\'{a} de los par\'{a}metros
+del radar, pues resulta menos efectivo que el proporcional.
 
+\begin{figure*}[hp]
+\label{mProporcional}
+\centering
+\includegraphics[scale=0.8]{graficos/mProporcional}
+\caption{Salida $\theta(t)$ con controlador proporcional}
+\end{figure*}
+
+\begin{figure*}[hp]
+\label{mIntegral}
+\centering
+\includegraphics[scale=0.8]{graficos/mIntegral}
+\caption{Salida $\theta(t)$ con controlador integral}
+\end{figure*}
+
+\begin{figure*}[hp]
+\label{mDerivativo}
+\centering
+\includegraphics[scale=0.8]{graficos/mDerivativo}
+\caption{Salida $\theta(t)$ con controlador derivativo}
+\end{figure*}
+
+\begin{figure*}[hp]
+\label{errorMProporcional}
+\centering
+\includegraphics[scale=0.8]{graficos/errorMProporcional}
+\caption{Error relativo porcentual al utilizar un controlador proporcional}
+\end{figure*}
+
+\begin{figure*}[hp]
+\label{errorMIntegral}
+\centering
+\includegraphics[scale=0.8]{graficos/errorMIntegral}
+\caption{Error relativo porcentual al utilizar un controlador integral}
+\end{figure*}
+
+\begin{figure*}[hp]
+\label{errorMDerivativo}
+\centering
+\includegraphics[scale=0.8]{graficos/errorMDerivativo}
+\caption{Error relativo porcentual al utilizar un controlador derivativo}
+\end{figure*}
 \end{document}
