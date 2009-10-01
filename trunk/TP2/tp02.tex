@@ -25,8 +25,8 @@
 
 \begin{abstract}
 En este art\'{i}culo se modela un sistema de seguimiento de blancos a lazo 
-cerrado. Se analiza el comportamiento del sistema con distintos tipos de \
-controladores: proporcional, integral y derivativo.
+cerrado. Se analiza el comportamiento del sistema con distintos controladores
+de tipo proporcional, integral y derivativo.
 \end{abstract}
 
 \keywords{Seguimiento de blancos, sistema de control, controlador proporcional,
@@ -43,7 +43,7 @@ entre ambos.
 En la secci\'{o}n \ref{modelo} se describe el modelo del sistema. En la
 secci\'{o}n \ref{simulaciones} se realizan las simulaciones correspondientes
 a los tres tipos de controladores utilizados: proporcional, integral y 
-derivativo. Por \'{u}ltimo, se exponen las conclusiones en la secci\'{o}n
+derivativo. Y por \'{u}ltimo, se exponen las conclusiones en la secci\'{o}n
 \ref{conclusiones}.
 
 \section{Modelo}\label{modelo}
@@ -59,7 +59,7 @@ El torque que producen los motores sobre la antena est\'{a} representado por
 la funci\'{o}n $u$.
 
 Se desea que el sistema sea a lazo cerrado. Para esto se mide el \'{a}ngulo
-$\theta$ de la antena y se lo compara con el \'{a}ngulo $\theta_{R}$ que marca
+$\theta$ de la antena y se lo compara con el \'{a}ngulo $\theta_{R}$ que denota
 la ubicaci\'{o}n real del objetivo. La diferencia entre ambos constituye una
 se\~{n}al de error $e(t) = \theta_{R}(t) - \theta(t)$ que se ingresa nuevamente 
 al controlador.
@@ -158,7 +158,7 @@ definido por:
 \label{ecuacion_error_relativo_porcentual}
 E\%(t)=\frac{\theta_{R}(t) - \theta(t)}{\theta_{R}(t)}
 \end{equation}
-Se observan oscilaciones que se estabilizan alrededor de los $5$ segundos.
+Se observan oscilaciones que se estabilizan alrededor de los cinco segundos.
 
 \subsection{Controlador integral}\label{integral}
 Otro tipo de controlador es el integral, cuya forma es:
@@ -172,7 +172,7 @@ siendo $e(t)$ la se\~nal de error. Se obtiene la relaci\'{o}n de
 entrada-salida como:
 
 \begin{equation}
-\label{ecuacion_modelo2}
+\label{ecuacion_modelo2a}
 I \ddot\theta = - b \dot\theta + K_i \int_0^t \theta_R(\tau) - \theta(\tau) d\tau
 \end{equation}
 
@@ -226,7 +226,7 @@ siempre existe alguna ra\'iz positiva para $K_i \in (0,+\infty)$. Por lo tanto,
 el sistema no es estable, presentando oscilaciones cuya amplitud aumenta
 en el tiempo. Este fen\'{o}meno se puede observar claramente en la figura $2$.
 El error relativo porcentual se presenta en la figura $5$, presentando tambi\'{e}n
-las caracter\'{i}sticas oscilaciones.
+las oscilaciones caracter\'{i}sticas.
 
 \subsection{Controlador derivativo}\label{derivativo}
 Como tercer controlador se propone un modelo derivativo, cuyo comportamiento
@@ -241,7 +241,7 @@ siendo $e(t)$ la se\~{n}al de error. Se obtiene la relaci\'{o}n de entrada-salid
 como:
 
 \begin{equation}
-\label{ecuacion_modelo2}
+\label{ecuacion_modelo2b}
 I \ddot\theta = - b \dot\theta + K_d (\dot\theta_R(t) - \dot\theta(t))
 \end{equation}
 
