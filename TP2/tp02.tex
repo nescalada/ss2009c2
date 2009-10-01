@@ -43,7 +43,7 @@ entre ambos.
 En la secci\'{o}n \ref{modelo} se describe el modelo del sistema. En la
 secci\'{o}n \ref{simulaciones} se realizan las simulaciones correspondientes
 a los tres tipos de controladores utilizados: proporcional, integral y 
-derivativo. Y por \'{u}ltimo, se exponen las conclusiones en la secci\'{o}n
+derivativo. Por \'{u}ltimo, se exponen las conclusiones en la secci\'{o}n
 \ref{conclusiones}.
 
 \section{Modelo}\label{modelo}
@@ -176,7 +176,7 @@ entrada-salida como:
 I \ddot\theta = - b \dot\theta + K_i \int_0^t \theta_R(\tau) - \theta(\tau) d\tau
 \end{equation}
 
-La descripci\'{o}n en variables de estado de la ecuaci\'on $9$ resulta:
+La descripci\'{o}n en variables de estado de la ecuaci\'on $10$ resulta:
 
 \begin{equation}
 \label{var_estados_model2}
@@ -224,8 +224,8 @@ El polinomio caracter\'istico queda definido como:
 Se concluye que para este polinomio caracter\'istico 
 siempre existe alguna ra\'iz positiva para $K_i \in (0,+\infty)$. Por lo tanto, 
 el sistema no es estable, presentando oscilaciones cuya amplitud aumenta
-en el tiempo. Este fen\'{o}meno se puede observar claramente en la figura $2$.
-El error relativo porcentual se presenta en la figura $5$, presentando tambi\'{e}n
+en el tiempo. Este fen\'{o}meno se observa claramente en la figura $2$.
+El error relativo porcentual se muestra en la figura $5$, presentando tambi\'{e}n
 las oscilaciones caracter\'{i}sticas.
 
 \subsection{Controlador derivativo}\label{derivativo}
@@ -245,7 +245,7 @@ como:
 I \ddot\theta = - b \dot\theta + K_d (\dot\theta_R(t) - \dot\theta(t))
 \end{equation}
 
-Se representa la ecuaci\'on $13$ en variables de estado como:
+Se representa la ecuaci\'on $14$ en variables de estado como:
 
 \begin{equation}
 \label{var_estados_model3}
