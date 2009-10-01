@@ -73,21 +73,23 @@ En todos los casos se utiliza el m\'{e}todo de Runge-Kutta de orden $4$ para
 la resoluci\'{o}n num\'{e}rica de las ecuaciones diferenciales.
 
 \subsection{Controlador proporcional}\label{proporcional}
-Un modelo de controlador proporcional $u(t)$ se propone seg\'{u}n la ecuaci\'{o}n lineal:
+Se propone un primer controlador que se comporta seg\'{u}n la 
+ecuaci\'{o}n lineal:
 
 \begin{equation}
 \label{error_modelo}
 u(t) = K e(t)
 \end{equation}
 
-donde $e(t)$ es la se\~nal de error, queda entonces la relaci\'{o}n de entrada-salida como una ecuaci\'{o}n diferencial:
+donde $e(t)$ es la se\~{n}al de error. La relaci\'{o}n de entrada-salida 
+puede expresarse entonces como la siguiente ecuaci\'{o}n diferencial:
 
 \begin{equation}
 \label{ecuacion_modelo1}
 I \ddot\theta = - b \dot\theta + K(\theta_R(t) - \theta(t))
 \end{equation}
 
-La descripci\'on en variables de estado se describe como:
+La descripci\'on en variables de estado resulta:
 
 \begin{equation}
 \label{var_estados_model1}
@@ -99,10 +101,12 @@ La descripci\'on en variables de estado se describe como:
 
 donde $x_1 = \theta$, $x_2 = \dot \theta$ y la salida es $\theta=x_1$.
 
-Siendo la estabilidad del sistema independiente de la excitaci\'{o}n $u(t)$ se puede estudiar la estabilidad del mismo
-a partir de la soluci\'{o}n homogenea a trav\'{e}s del polinomio caracter\'istico. Si la parte real de las raices de
-de todos los autovalores del polinomio caracter\'istico es negativa, entonces el sistema es estable.\\
-Presentando la figura $4$ en forma vectorial:
+Siendo la estabilidad del sistema dependiente de la excitaci\'{o}n $u(t)$,
+es posible estudiar la estabilidad utilizando el polinomio caracter\'istico. 
+Si la parte real de las ra\'{i}ces de
+todos los autovalores del polinomio caracter\'istico es negativa, entonces 
+el sistema es estable.\\
+Presentando la ecuaci\'{o}n $4$ en forma vectorial:
 \begin{center}
 $
 \dot x(t) = 
@@ -117,13 +121,13 @@ x_2
 = Ax(t)
 $
 \end{center}
-El poliniomio caracter\'istico de $A$ se define como:
+El polinomio caracter\'istico de $A$ es:
 
 \begin{equation}
  P( \lambda ) = |A - \lambda I|
 \end{equation}
 
-el cual se aplica a la matriz $A$ ya definida
+Aplic\'{a}ndolo a la matriz que hemos definido resulta:
 
 \begin{equation}
  P( \lambda ) = |A - \lambda I| = 
@@ -135,33 +139,45 @@ el cual se aplica a la matriz $A$ ya definida
 \lambda^2 + \frac{b}{I} \lambda + \frac{K}{I}
 \end{equation}
 
-Siendo los autovalores las ra\'ices de $P(\lambda) = 0$, se obtiene que las mismas son
+Siendo los autovalores las ra\'ices de $P(\lambda) = 0$, las mismas son:
 
 \begin{equation}
  \lambda{1,2} = - \frac{b}{2I} \pm \frac{1}{2} \sqrt{\frac{b^2}{I^2}-4\frac{K}{I}}
 \end{equation}
 
-Obteniendo que para todo $K > 0$ las raices son negativas, a lo cual, el sistema es estable para $K \in (0,+\infty)$.\\
-Respecto a la presencia de oscilaciones en r\'egimen estacionario, uno de los autovalores (ecuaci\'on 6) debe tener 
-parte imaginaria no nula, y en consecuencia, el determinante debe ser negativo. Esta condici\'on se asegura para 
-valores de $k > \frac{b^2}{4I}$. 
+Se observa que para todo $K > 0$ las raices son negativas, por lo que el sistema 
+es estable para $K \in (0,+\infty)$.\\
+Respecto a la presencia de oscilaciones en r\'{e}gimen estacionario, uno de los 
+autovalores (ecuaci\'on $6$) debe tener parte imaginaria no nula y en 
+consecuencia el determinante debe ser negativo. Esta condici\'on se asegura 
+para valores de $K > \frac{b^2}{4I}$. 
+
+En la figura $1$ se observan las distintas salidas al ir variando los valores
+de la constante $K$. En la figura $4$ se muestra el error relativo porcentual,
+definido por:
+\begin{equation}
+\label{ecuacion_error_relativo_porcentual}
+E\%(t)=\frac{\theta_{R}(t) - \theta(t)}{\theta_{R}(t)}
+\end{equation}
+Se observan oscilaciones que se estabilizan alrededor de los $5$ segundos.
 
 \subsection{Controlador integral}\label{integral}
-Otro modelo de controlador se propone como el integral, cuya forma es:
+Otro tipo de controlador es el integral, cuya forma es:
 
 \begin{equation}
 \label{error_modelo2}
 u(t) = K_i \int_0^t e(\tau) d\tau
 \end{equation}
 
-siendo $e(t)$ la se\~nal de error, se obtiene la relaci\'{o}n de de entrada-salida como:
+siendo $e(t)$ la se\~nal de error. Se obtiene la relaci\'{o}n de
+entrada-salida como:
 
 \begin{equation}
 \label{ecuacion_modelo2}
 I \ddot\theta = - b \dot\theta + K_i \int_0^t \theta_R(\tau) - \theta(\tau) d\tau
 \end{equation}
 
-Se describe la ecuaci\'on $9$ en variables de estado como:
+La descripci\'{o}n en variables de estado de la ecuaci\'on $9$ resulta:
 
 \begin{equation}
 \label{var_estados_model2}
@@ -172,7 +188,8 @@ Se describe la ecuaci\'on $9$ en variables de estado como:
 \end{cases}
 \end{equation}
 
-donde $x_1 = \int_0^t \theta(\tau) d\tau$, $x_2 = \theta$, $x_3 = \dot \theta$ y la salida es $\theta=x_2$.\\
+donde $x_1 = \int_0^t \theta(\tau) d\tau$, $x_2 = \theta$, $x_3 = \dot \theta$ 
+y la salida es $\theta=x_2$.\\
 Representando dichas variables en forma matricial:
 
 \begin{center}
@@ -192,7 +209,7 @@ x_3
 $
 \end{center}
 
-Entonces, el polinomio caracter\'istico queda definido como:
+El polinomio caracter\'istico queda definido como:
 
 \begin{equation}
  P( \lambda ) = |A - \lambda I| = 
@@ -206,25 +223,30 @@ Entonces, el polinomio caracter\'istico queda definido como:
 \end{equation}
 
 Se concluye que para este polinomio caracter\'istico 
-siempre existe alguna ra\'iz positiva para $K_i \in (0,+\infty)$, por lo tanto, 
-el sistema no ser\'a estable presentando oscilaciones cuyas amplitudes aumentan en el tiempo.
+siempre existe alguna ra\'iz positiva para $K_i \in (0,+\infty)$. Por lo tanto, 
+el sistema no es estable, presentando oscilaciones cuya amplitud aumenta
+en el tiempo. Este fen\'{o}meno se puede observar claramente en la figura $2$.
+El error relativo porcentual se presenta en la figura $5$, presentando tambi\'{e}n
+las caracter\'{i}sticas oscilaciones.
 
 \subsection{Controlador derivativo}\label{derivativo}
-Un tercer modelo de controlador se propone como el derivativo, definido como:
+Como tercer controlador se propone un modelo derivativo, cuyo comportamiento
+se define como:
 
 \begin{equation}
 \label{error_modelo3}
-u(t) = K_d \frac{d e(t)}{\partial t}
+u(t) = K_d \frac{d e(t)}{d t}
 \end{equation}
 
-siendo $e(t)$ la se\~nal de error, se obtiene la relaci\'{o}n de de entrada-salida como:
+siendo $e(t)$ la se\~{n}al de error. Se obtiene la relaci\'{o}n de entrada-salida 
+como:
 
 \begin{equation}
 \label{ecuacion_modelo2}
 I \ddot\theta = - b \dot\theta + K_d (\dot\theta_R(t) - \dot\theta(t))
 \end{equation}
 
-Se representa la ecuaci\'on $9$ en variables de estado como:
+Se representa la ecuaci\'on $13$ en variables de estado como:
 
 \begin{equation}
 \label{var_estados_model3}
@@ -235,7 +257,7 @@ Se representa la ecuaci\'on $9$ en variables de estado como:
 \end{equation}
 
 donde $x_1 = \theta$, $x_2 = \dot \theta$ y la salida es $\theta=x_1$.\\
-Representando dichas variables en forma matricial:
+Representando dichas variables en forma matricial resulta:
 
 \begin{center}
 $
@@ -252,7 +274,7 @@ x_2
 $
 \end{center}
 
-Cuyo polinomio caracter\'istico queda definido como:
+El polinomio caracter\'istico queda definido como:
 
 \begin{equation}
  P( \lambda ) = |A - \lambda I| = 
@@ -264,8 +286,11 @@ Cuyo polinomio caracter\'istico queda definido como:
 \lambda^2 + \lambda \frac{b+K_d}{I}
 \end{equation}
 
-Las raices de este polinomio caracter\'istico son $0$ y $-\frac{b+K_d}{I}$, a lo cual, 
-la estabilidad se cumple siempre y cuando $K_d \in (-b, +\infty)$.
+Las ra\'{i}ces de este polinomio son $0$ y $-\frac{b+K_d}{I}$, por lo que el
+sistema es estable siempre y cuando $K_d \in (-b, +\infty)$.
+
+En la figura $3$ se presenta la salida para distintos valores de $K_d$. En la
+figura $6$ se muestra el error relativo porcentual para este tipo de controlador.
 
 \section{Conclusiones}\label{conclusiones}
 A partir de las simulaciones se observa que el controlador proporcional es el
@@ -297,7 +322,7 @@ del radar, pues resulta menos efectivo que el proporcional.
 \end{figure*}
 
 \begin{figure*}[hp]
-\label{errorMProporcional}
+\label{errorPorcentualMProporcional}
 \centering
 \includegraphics[scale=0.8]{graficos/errorMProporcional}
 \caption{Error relativo porcentual al utilizar un controlador proporcional}
@@ -311,7 +336,7 @@ del radar, pues resulta menos efectivo que el proporcional.
 \end{figure*}
 
 \begin{figure*}[hp]
-\label{errorMDerivativo}
+\label{errorPorcentualMDerivativo}
 \centering
 \includegraphics[scale=0.8]{graficos/errorMDerivativo}
 \caption{Error relativo porcentual al utilizar un controlador derivativo}
