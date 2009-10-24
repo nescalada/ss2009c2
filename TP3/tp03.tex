@@ -35,23 +35,90 @@ del tiempo de vuelo de una nave espacial mediante el m\'{e}todo de Montecarlo.
 \keywords{L'Ecuyer, generador lineal congruencial, simulaci\'{o}n de Montecarlo,
  test $\chi^{2}$, test Kolmogorov-Smirnov, propulsi\'{o}n WARP}
 
-%TODO
 \section{Introducci\'{o}n}\label{introduccion}
+
+El concepto de aleatoriedad est\'{a} presente en diversos campos de la ciencia,
+tales como la criptograf\'{i}a y la estad\'{i}stica.
+
+En determinadas ocasiones es deseable generar secuencias de n\'{u}meros
+aleatorios. Resulta l\'{o}gico pensar en generar dichas secuencias utilizando
+una computadora. Sin embargo, los n\'{u}meros al azar surgen \'{u}nicamente
+de procesos naturales que no pueden ser recreados en un dispositivo determinista
+como lo es una computadora. La soluci\'{o}n a este problema consiste en utilizar
+algoritmos que permitan generar secuencias suficientemente largas de n\'{u}meros
+que presenten una distribuci\'{o}n estad\'{i}stica regular. Es decir, que no debe
+ser posible distinguir mediante pruebas estad\'{i}sticas que la secuencia no
+ha sido construida realmente al azar.
+
+Una de los generadores m\'{a}s conocidos de n\'{u}meros pseudo-aleatorios es
+el generador lineal congruencial (LCG). 
+
+En la secci\'{o}n \ref{generador} se 
+analiza el geneador de L'Ecuyer, que utiliza dos LCG para generar las secuencias.
+En la secci\'{o}n \ref{pruebagenerador} se somete el generador de L'Ecuyer
+a tests estad\'{i}sticos para analizar la distribuci\'{o}n de los n\'{u}meros
+generados. En la secci\'{o}n \ref{triangular} se obtiene una distribuci\'{o}n
+triangular a partir de la salida del generador. En la secci\'{o}n
+\ref{simulacionpropulsor} se realiza una simulaci\'{o}n del tiempo de vuelo
+de la nave USS Enterprise utilizando el m\'{e}todo de Montecarlo. Finalmente,
+se exponen las conclusiones en la secci\'{o}n \ref{conclusiones}.
 
 %TODO
 \section{Generador de L'Ecuyer}\label{generador}
 
-%TODO
-\subsection{Descripci\'{o}n}\label{descripciongenerador}
+El generador sugerido por L'Ecuyer combina dos LCG de acuerdo al siguiente 
+algoritmo:
 
-%TODO
+\textit{PASO 1}
+Seleccionar una semilla $X_{1,0}$ en el rango $[1, 2147483562]$ para el LCG$1$
+y $X_{2,0}$ en el rango $[1, 2147483398]$ para el LCG$2$.
+
+\textit{PASO 2}
+Evaluar cada generador individual
+
+\begin{equation}
+\label{LCG1}
+X_{1,n+1} = 40014 \ X_{1,n} \ mod \ 2147483563
+\end{equation}
+
+\begin{equation}
+\label{LCG2}
+X_{2,n+1} = 40692 \ X_{2,n} \ mod \ 2147483399
+\end{equation}
+
+\textit{PASO 3}
+Computar
+
+\begin{equation}
+\label{xn}
+X_{n+1} = (X_{1,n+1} - X_{2,n+1}) \ mod \ 2147483562
+\end{equation}
+
+\textit{PASO 4}
+Computar
+
+\begin{equation}
+\label{un}
+U_{n+1} = 
+    \begin{cases}
+    \frac{X_{n+1}}{2147483563}, X_{n+1} > 0\\
+     \ \\
+    \frac{2147483562}{2147483563}, X_{n+1} = 0\\
+    \end{cases}
+\end{equation}
+
+\textit{PASO 5}
+Hacer $n = n + 1$ e ir al \textit{PASO 2}.
+
+\section{Probando el generador de L'Ecuyer}\label{pruebagenerador}
+
 \subsection{Test $\chi^{2}$}\label{testchicuadrado}
 
 %TODO
 \subsection{Test Kolmogorov-Smirnov}\label{testks}
 
 %TODO
-\subsection{Densidad triangular}\label{triangular}
+\section{Densidad triangular}\label{triangular}
 
 %TODO
 \section{Sistema de propulsi\'{o}n WARP}\label{simulacionpropulsor}
