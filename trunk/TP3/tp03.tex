@@ -1,4 +1,5 @@
 \documentclass{sig-alternate}
+\usepackage{epstopdf}
 
 \begin{document}
 
@@ -112,9 +113,62 @@ Hacer $n = n + 1$ e ir al \textit{PASO 2}.
 
 \section{Probando el generador de L'Ecuyer}\label{pruebagenerador}
 
+Resulta de inter\'{e}s estudiar si la secuencia generada se encuentra
+distribuida de manera uniforme. A continuaci\'{o}n se somete a prueba el
+generador de L'Ecuyer utilizando el test $\chi^{2}$ y el test de 
+Kolmogorov-Smirnov.
+
 \subsection{Test $\chi^{2}$}\label{testchicuadrado}
 
-%TODO
+Se desea establecer si es posible aceptar la hip\'{o}tesis $H_{0}:$ la secuencia
+generada utilizando el algoritmo de la secci\'{o}n \ref{generador} corresponde 
+a muestras de una variable uniforme $\mathcal{U}[0,1)$,
+con un nivel de confianza del $95\%$. Para esto se generan $10,000$ n\'{u}meros 
+utilizando $(0,2)$ como semillas. Luego se agrupan en $100$ intervalos de clase.
+
+La media esperada en cada intervalo de clase es $E_{i} = 100$, pues se analiza 
+una distribuci\'{o}n uniforme. El estad\'{i}stico dado por la ecuaci\'{o}n:
+
+\begin{equation}\label{estadistico}
+\chi^{2}_{0} = \sum_{i=1}^{100} \frac{(O_{i} - E_{i})^{2}}{E_{i}}
+\end{equation}
+
+resulta aproximadamente $98.84$.
+Se observa que la distribuci\'{o}n $\chi^{2}$ subyacente posee $99$ grados de
+libertad, puesto que se han considerado $100$ categor\'{i}as para agrupar los
+n\'{u}meros generados.
+
+Para el nivel de significaci\'{o}n deseado, $\alpha = 0.05$, se obtiene el
+valor cr\'{i}tico $\chi^{2}_{99,0.05} = 124.3421$. Como 
+$\chi^{2}_{99,0.05} > \chi^{2}_{0}$ se acepta $H_{0}$ y se determina que
+los n\'{u}meros est\'{a}n distribuidos de manera uniforme. En la figura
+~\ref{fig:clases} se observa la distribuci\'{o}n de los $10,000$ n\'{u}meros para
+cada clase. En las figuras ~\ref{fig:duplas} y ~\ref{fig:ternas} se observa que no es
+posible detectar patrones en la distribuci\'{o}n de la secuencia generada, puesto
+que se distribuyen uniformemente.
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/clases}
+\caption{Cantidad de resultados por categor\'{i}a para el test $\chi^{2}$}
+\label{fig:clases}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/duplas}
+\caption{Duplas $(U_{i}, U_{i+1})$ de n\'{u}meros pseudo-aleatorios generados}
+\label{fig:duplas}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/ternas}
+\caption{Ternas $(U_{i}, U_{i+1}, U_{i+2})$ de n\'{u}meros pseudo-aleatorios
+generados}
+\label{fig:ternas}
+\end{figure*}
+
 \subsection{Test Kolmogorov-Smirnov}\label{testks}
 
 %TODO
