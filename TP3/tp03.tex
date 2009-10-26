@@ -51,12 +51,12 @@ que presenten una distribuci\'{o}n estad\'{i}stica regular. Es decir, que no deb
 ser posible distinguir mediante pruebas estad\'{i}sticas que la secuencia no
 ha sido construida realmente al azar.
 
-Una de los generadores m\'{a}s conocidos de n\'{u}meros pseudo-aleatorios es
+Uno de los generadores m\'{a}s conocidos de n\'{u}meros pseudo-aleatorios es
 el generador lineal congruencial (LCG). 
 
 En la secci\'{o}n \ref{generador} se 
-analiza el geneador de L'Ecuyer, que utiliza dos LCG para generar las secuencias.
-En la secci\'{o}n \ref{pruebagenerador} se somete el generador de L'Ecuyer
+analiza el generador de L'Ecuyer, que utiliza dos LCG para generar las secuencias.
+En la secci\'{o}n \ref{pruebagenerador} se somete al generador de L'Ecuyer
 a tests estad\'{i}sticos para analizar la distribuci\'{o}n de los n\'{u}meros
 generados. En la secci\'{o}n \ref{triangular} se obtiene una distribuci\'{o}n
 triangular a partir de la salida del generador. En la secci\'{o}n
@@ -64,7 +64,6 @@ triangular a partir de la salida del generador. En la secci\'{o}n
 de la nave USS Enterprise utilizando el m\'{e}todo de Montecarlo. Finalmente,
 se exponen las conclusiones en la secci\'{o}n \ref{conclusiones}.
 
-%TODO
 \section{Generador de L'Ecuyer}\label{generador}
 
 El generador sugerido por L'Ecuyer combina dos LCG de acuerdo al siguiente 
@@ -145,7 +144,7 @@ los n\'{u}meros est\'{a}n distribuidos de manera uniforme. En la figura
 ~\ref{fig:clases} se observa la distribuci\'{o}n de los $10,000$ n\'{u}meros para
 cada clase. En las figuras ~\ref{fig:duplas} y ~\ref{fig:ternas} se observa que no es
 posible detectar patrones en la distribuci\'{o}n de la secuencia generada, puesto
-que se distribuyen uniformemente.
+que la misma presenta una densidad uniforme.
 
 \begin{figure*}[hp]
 \centering
