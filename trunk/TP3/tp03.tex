@@ -1,5 +1,5 @@
 \documentclass{sig-alternate}
-\usepackage{epstopdf}
+%\usepackage{epstopdf}
 
 \begin{document}
 
@@ -245,8 +245,136 @@ X =
 %valores $a = 0$, $b = 1$ y $c = 3$.
 
 \section{Sistema de propulsi\'{o}n WARP}\label{simulacionpropulsor}
+El sistema de propulsi\'on WARP de la nave espacial USS Enterprise consiste en un n\'ucleo WARP
+en el interior de un reactor donde se llevan a cabo reacciones de aniquilaci\'on 
+materia-antimateria, moderadas por cristales de Dilitio. Dichos cristales se
+procesan en una c\'amara controlada llamada Matriz de Dilitio, el cual tiene
+un subsistema de redundancia. Este proceso se realiza para alimentar a los 
+propulsores en las nescellas laterales de la nave. El tiempo de operaci\'on de 
+cada propulsor es una variable aleatoria exponcialmente distribuida $X_1$,  $X_2$ 
+con tiempo medio $T_m = 240$ horas. El tiempo de operaci\'on entre fallos del n\'ucleo 
+WARP es una variable uniforme $X_3 \sim \mathcal{U}[72,12]$, el tiempo de operaci\'on 
+de la c\'amara de Dilitio es una variable uniforme $X_4 \sim \mathcal{U}[20,30]$ y, por 
+\'ultimo, el tiempo entre fallos de la c\'amara de redundacia es una variable uniforme 
+$X_5 \sim \mathcal{U}[5,7]$, todas medidas en horas.
 
-%TODO
+Las funciones de distribuci\'on se describen como:
+
+Siendo $x_1$ y $x_2$ realizaciones de $X_1$ y $X_2$:
+\begin{equation}
+	f_{x_1, x_2}(t) = 
+		\begin{cases}
+		  \frac{1}{T_m} e^{-\frac{t}{T_m}} & t > 0 \\
+		  0 & t < 0
+		\end{cases}
+\end{equation}
+
+Siendo $x_3$ una realizaci\'on de $X_3$:
+\begin{equation}
+	f_{x_3}(x) = 
+		\begin{cases}
+		  \frac{1}{12} & x \in (72,84) \\
+		  0 & x \notin (72,84)
+		\end{cases}
+\end{equation}
+
+Siendo $x_4$ una realizaci\'on de $X_4$:
+\begin{equation}
+	f_{x_4}(x) = 
+		\begin{cases}
+		  \frac{1}{30} & x \in (20,50) \\
+		  0 & x \notin (20,50)
+		\end{cases}
+\end{equation}
+
+Siendo $x_5$ una realizaci\'on de $X_5$:
+\begin{equation}
+	f_{x_5}(x) = 
+		\begin{cases}
+		  \frac{1}{7} & x \in (5,12) \\
+		  0 & x \notin (5,12)
+		\end{cases}
+\end{equation}
+
+El tiempo de operaci\'on del sistema integrado es una variable 
+aleatoria $T$ definida como:
+
+\begin{equation}
+ T = \min\{ \max \{ X_4, X_5 \} , X_3 , \max \{X_2, X_1\}\}
+\end{equation}
+
+Cuyo tiempo medio entre fallos del sistema se describe de la forma:
+\begin{equation}
+\label{integralsintrans}
+	\mathcal{E} \{ T \} = \int\limits_{\mathcal{D}} \min\{ \max \{ x_4, x_5 \} , x_3 , \max \{x_2, x_1\}\} \\ f_{x_1}(x_1) f_{x_2}(x_2) f_{x_3}(x_3) f_{x_4}(x_4) f_{x_5}(x_5) d^5x
+\end{equation}
+donde $\mathcal{D}$ es el dominio $[5,12]$ x $[20,50]$ x $[72,84]$ x $[0,\infty]$ x $[0,\infty]$.
+
+Se transforma el dominio de integraci\'on $\mathcal{D} \to [0,1]^5$ de manera de poder 
+realizar la simulaci\'on de Montecarlo para este sistema. Las transformaciones se definen como:
+
+\begin{eqnarray}
+	\label{trans_uno}
+	x_1 = - T_m \ln (1 - u_1) \\
+	\label{trans_dos}
+	x_2 = - T_m \ln (1 - u_2) \\
+	\label{trans_tres}
+	x_3 = 12 u_3 + 72 \\
+	\label{trans_cuatro}
+	x_4 = 30 u_4 + 20 \\
+	\label{trans_cinco}
+	x_5 = 5 u_5 + 7 \\
+\end{eqnarray}
+siendo $u_i$ realizaciones de variables aleatorias $\mathcal{U}[0,1]$.
+
+Se obtiene el determinante jacobiano de la transformaci\'on $J$:
+\begin{equation}
+	\label{jacobiano}
+	J =
+		\begin{vmatrix}
+			\frac{T_m}{1 - u_1} & 0  & 0  & 0  & 0 \\
+			0 & \frac{T_m}{1 - u_2} & 0  & 0  & 0  \\
+			0 & 0 & 12 & 0 & 0 \\
+			0 & 0 & 0 & 30  & 0 \\
+			0 & 0 & 0 & 0 & 5 \\
+		\end{vmatrix}
+	=
+		\frac{180 T_m^2}{(1-u_1)(1-u_2)}
+\end{equation}
+
+Por \'ultimo se reemplaza en \eqref{integralsintrans} con
+\eqref{trans_uno}, \eqref{trans_dos}, \eqref{trans_tres}, \eqref{trans_cuatro}, \eqref{trans_cinco}, 
+se multiplica por \eqref{jacobiano}, y se obtiene la integral transformada:
+
+\begin{equation}
+\label{integralcontrans}
+	\mathcal{E} \{ T \} =	\int\limits_{[0,1]^6} \min\{ \max \{ 30 u_4 + 20, 5 u_5 + 7 \} , 12 u_3 + 72 , \max \{- T_m \ln (1 - u_2), - T_m \ln (1 - u_1)\}\} d^5u
+\end{equation}
+
+Para la realizaci\'on de la simulaci\'on del sistema mediante el m\'etodo de Montecarlo 
+se utiliza el el generador de n\'umeros pseudo-aleatorios de L'Ecuyer obtenido en la secci\'on \ref{pruebagenerador}
+calculando 5 secuencias correspondientes a $u_i \in [0,1]$. Se realizan 20 simulaciones  
+de la integral \eqref{integralcontrans}, resultando el
+estimador de tiempo medio de vuelo $\langle T \rangle = 34.798822$ horas y el desv\'io muestral
+$S = 0.86899$ horas. Resultando que para un nivel de significaci\'on del $5\%$, el tiempo medio de vuelo
+del sistema de propulsi\'on WARP pertenece al rango $ 34.80 \pm 0.406 $ horas.
+
+\begin{table}[h]
+\label{seeds}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ $u_1$ & 13 & 20 \\
+\hline
+ $u_2$ & 52 & 87 \\
+\hline
+ $u_3$ & 101 & 115 \\
+\hline
+\end{tabular}
+\caption{Semillas para los generadores de L'Ecuyer de $u_i$}
+\end{table}
+
+
 \section{Conclusiones}\label{conclusiones}
 
 %TODO
