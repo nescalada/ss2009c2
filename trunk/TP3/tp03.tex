@@ -192,7 +192,7 @@ de $\mathcal{U} \sim \mathcal{U}[0,1]$, entonces $F^{-1}(u)$ es una
 realizaci\'{o}n de una variable aleatoria $X$ con funci\'{o}n de distribuci\'{o}n
 $F(x)$.
 
-Integrando la ecuaci\'{o}n \ref{triangular} se obtiene la funci\'{o}n de 
+Integrando la ecuaci\'{o}n \ref{triangularEc} se obtiene la funci\'{o}n de 
 distribuci\'{o}n $F_{X}(x)$:
 
 \begin{equation}
@@ -284,10 +284,13 @@ aleatoria $T$ definida como:
 \end{equation}
 
 Cuyo tiempo medio entre fallos del sistema se describe de la forma:
-\begin{equation}
+\begin{eqnarray}
 \label{integralsintrans}
-	\mathcal{E} \{ T \} = \int\limits_{\mathcal{D}} \min\{ \max \{ x_4, x_5 \} , x_3 , \max \{x_2, x_1\}\} \\ f_{x_1}(x_1) f_{x_2}(x_2) f_{x_3}(x_3) f_{x_4}(x_4) f_{x_5}(x_5) d^5x
-\end{equation}
+	\mathcal{E} \{ T \} = \int\limits_{\mathcal{D}} \min\{ \max \{ x_4, x_5 \} , x_3 , \max \{x_2, x_1\}\}
+	\nonumber
+	\\
+	f_{x_1}(x_1) f_{x_2}(x_2) f_{x_3}(x_3) f_{x_4}(x_4) f_{x_5}(x_5) d^5x
+\end{eqnarray}
 donde $\mathcal{D}$ es el dominio $[5,12]$ x $[20,50]$ x $[72,84]$ x $[0,\infty]$ x $[0,\infty]$.
 
 Se transforma el dominio de integraci\'on $\mathcal{D} \to [0,1]^5$ de manera de poder 
@@ -303,11 +306,11 @@ realizar la simulaci\'on de Montecarlo para este sistema. Las transformaciones s
 	\label{trans_cuatro}
 	x_4 = 30 u_4 + 20 \\
 	\label{trans_cinco}
-	x_5 = 5 u_5 + 7 \\
+	x_5 = 5 u_5 + 7
 \end{eqnarray}
 siendo $u_i$ realizaciones de variables aleatorias $\mathcal{U}[0,1]$.
 
-Se obtiene el determinante jacobiano de la transformaci\'on $J$:
+Se obtiene el determinante jacobiano de la transformaci\'on:
 \begin{equation}
 	\label{jacobiano}
 	J =
@@ -326,17 +329,20 @@ Por \'ultimo se reemplaza en \eqref{integralsintrans} con
 \eqref{trans_uno}, \eqref{trans_dos}, \eqref{trans_tres}, \eqref{trans_cuatro}, \eqref{trans_cinco}, 
 se multiplica por \eqref{jacobiano}, y se obtiene la integral transformada:
 
-\begin{equation}
+\begin{eqnarray}
 \label{integralcontrans}
-	\mathcal{E} \{ T \} =	\int\limits_{[0,1]^6} \min\{ \max \{ 30 u_4 + 20, 5 u_5 + 7 \} , 12 u_3 + 72 , \max \{- T_m \ln (1 - u_2), - T_m \ln (1 - u_1)\}\} d^5u
-\end{equation}
+	\mathcal{E} \{ T \} =	\int\limits_{[0,1]^6} \min\{ \max \{ 30 u_4 + 20, 5 u_5 + 7 \} , 12 u_3
+	\nonumber
+	\\
+	 + 72 , \max \{- T_m \ln (1 - u_2), - T_m \ln (1 - u_1)\}\} d^5u
+\end{eqnarray}
 
 Para la realizaci\'on de la simulaci\'on del sistema mediante el m\'etodo de Montecarlo 
-se utiliza el el generador de n\'umeros pseudo-aleatorios de L'Ecuyer obtenido en la secci\'on \ref{pruebagenerador}
+se utiliza el generador de n\'umeros pseudo-aleatorios de L'Ecuyer obtenido en la secci\'on \ref{pruebagenerador},
 calculando 5 secuencias correspondientes a $u_i \in [0,1]$. Se realizan 20 simulaciones  
 de la integral \eqref{integralcontrans}, resultando el
 estimador de tiempo medio de vuelo $\langle T \rangle = 34.798822$ horas y el desv\'io muestral
-$S = 0.86899$ horas. Resultando que para un nivel de significaci\'on del $5\%$, el tiempo medio de vuelo
+$S = 0.86899$ horas. Se determina que para un nivel de significaci\'on del $5\%$, el tiempo medio de vuelo
 del sistema de propulsi\'on WARP pertenece al rango $ 34.80 \pm 0.406 $ horas.
 
 \begin{table}[h]
@@ -358,8 +364,11 @@ del sistema de propulsi\'on WARP pertenece al rango $ 34.80 \pm 0.406 $ horas.
 \section{Conclusiones}\label{conclusiones}
 
 A partir de las simulaciones y los tests que se realizan al generador de n\'{u}meros 
-aleatorios de L'Ecuyer, se desprende que es un buen generador. Ya que no solo no se observan hiperplanos en los gr\'{a}ficos sino que tambi\'{e}n aprob\'{o} los test de 
-$\chi^{2}$ y Kolmogorov-Smironov.\\ 
+aleatorios de L'Ecuyer se desprende que es un buen generador, ya que no solo no 
+se observan hiperplanos en los gr\'{a}ficos sino que tambi\'{e}n fue sometido a
+los tests $\chi^{2}$ y Kolmogorov-Smironov con resultado exitoso. Este generador
+permite realizar diversas simulaciones con la seguridad de que los datos de
+entrada presentan una distribuci\'{o}n uniforme.
 %En lo que respecta al USS Enterprise
 
 \begin{figure*}[hp]
