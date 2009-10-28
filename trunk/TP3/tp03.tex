@@ -201,9 +201,9 @@ F_{X}(x) =
     \begin{cases}
     0, & x < a\\
      \ \\
-    \frac{x^{2} - 2ax}{(b-a)(c-a)}, &  a \le x \le b\\
+    \frac{x^{2} - 2ax + a^{2}}{(b-a)(c-a)}, &  a \le x \le b\\
      \ \\
-    \frac{2cx - x^{2}}{(c-b)(c-a)}, & b < x \le c\\
+    \frac{b-a}{c-a} + \frac{2cx - x^{2} - b(2c-b)}{(c-b)(c-a)}, & b < x \le c\\
      \ \\
      1, & x > c\\
     \end{cases}
@@ -215,9 +215,9 @@ Por \'{u}ltimo, la VA $X$ resulta:
 \label{vaconftriangular}
 X = 
     \begin{cases}
-    -(x-c)^2 + c ^2 + \sqrt{(b-a)(c-a)u + a^2} + a, & a \leq U \leq b \\
+    a + \sqrt{U(c-a)(b-a)}, 0 \leq U \leq \frac{b-a}{c-a} \\
     \ \\
-    -(x-c)^2 + c ^2 - \sqrt{(c-b)(c-a)u - c^2} + c, & b \le U \leq c \\
+    c + \sqrt{(c-b)^{2} - U(c-b)(c-a) + (b-a)(c-b)}, \\ \frac{b-a}{c-a} < U \leq 1 \\
     \end{cases}
 \end{equation}
 
