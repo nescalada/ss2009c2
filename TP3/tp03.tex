@@ -217,12 +217,13 @@ X =
     \begin{cases}
     a + \sqrt{U(c-a)(b-a)}, 0 \leq U \leq \frac{b-a}{c-a} \\
     \ \\
-    c + \sqrt{(c-b)^{2} - U(c-b)(c-a) + (b-a)(c-b)}, \\ \frac{b-a}{c-a} < U \leq 1 \\
+    c - \sqrt{(c-b)^{2} - U(c-b)(c-a) + (b-a)(c-b)}, \\ \frac{b-a}{c-a} < U \leq 1 \\
     \end{cases}
 \end{equation}
 
-%En la figura ~\ref{fig:triangular} se observa la distribuci\'{o}n para los
-%valores $a = 0$, $b = 1$ y $c = 3$.
+En la figura ~\ref{fig:triangular} se observa la distribuci\'{o}n para los
+valores $a = 0$, $b = 1$ y $c = 3$ al generar las variables $X_{1}, X_{2},
+\dots, X_{10000}$.
 
 \section{Sistema de propulsi\'{o}n WARP}\label{simulacionpropulsor}
 El sistema de propulsi\'on WARP de la nave espacial USS Enterprise consiste en un n\'ucleo WARP
@@ -391,6 +392,13 @@ entrada presentan una distribuci\'{o}n uniforme.
 \caption{Ternas $(U_{i}, U_{i+1}, U_{i+2})$ de n\'{u}meros pseudo-aleatorios
 generados}
 \label{fig:ternas}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/triangular}
+\caption{$X_{1}, X_{2}, \dots, X_{10000}$ con distribuci\'{o}n triangular}
+\label{fig:triangular}
 \end{figure*}
 
 \end{document}
