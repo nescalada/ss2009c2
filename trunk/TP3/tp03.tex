@@ -146,27 +146,7 @@ cada clase. En las figuras ~\ref{fig:duplas} y ~\ref{fig:ternas} se observa que 
 posible detectar patrones en la distribuci\'{o}n de la secuencia generada, puesto
 que la misma presenta una densidad uniforme.
 
-\begin{figure*}[hp]
-\centering
-\includegraphics[scale=0.8]{graficos/clases}
-\caption{Cantidad de resultados por categor\'{i}a para el test $\chi^{2}$}
-\label{fig:clases}
-\end{figure*}
-
-\begin{figure*}[hp]
-\centering
-\includegraphics[scale=0.8]{graficos/duplas}
-\caption{Duplas $(U_{i}, U_{i+1})$ de n\'{u}meros pseudo-aleatorios generados}
-\label{fig:duplas}
-\end{figure*}
-
-\begin{figure*}[hp]
-\centering
-\includegraphics[scale=0.8]{graficos/ternas}
-\caption{Ternas $(U_{i}, U_{i+1}, U_{i+2})$ de n\'{u}meros pseudo-aleatorios
-generados}
-\label{fig:ternas}
-\end{figure*}
+%Aca estaban los graficos antes
 
 \subsection{Test Kolmogorov-Smirnov}\label{testks}
 
@@ -377,6 +357,31 @@ del sistema de propulsi\'on WARP pertenece al rango $ 34.80 \pm 0.406 $ horas.
 
 \section{Conclusiones}\label{conclusiones}
 
-%TODO
+A partir de las simulaciones y los tests que se realizan al generador de n\'{u}meros 
+aleatorios de L'Ecuyer, se desprende que es un buen generador. Ya que no solo no se observan hiperplanos en los gr\'{a}ficos sino que tambi\'{e}n aprob\'{o} los test de 
+$\chi^{2}$ y Kolmogorov-Smironov.\\ 
+%En lo que respecta al USS Enterprise
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/clases}
+\caption{Cantidad de resultados por categor\'{i}a para el test $\chi^{2}$}
+\label{fig:clases}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/duplas}
+\caption{Duplas $(U_{i}, U_{i+1})$ de n\'{u}meros pseudo-aleatorios generados}
+\label{fig:duplas}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/ternas}
+\caption{Ternas $(U_{i}, U_{i+1}, U_{i+2})$ de n\'{u}meros pseudo-aleatorios
+generados}
+\label{fig:ternas}
+\end{figure*}
 
 \end{document}
