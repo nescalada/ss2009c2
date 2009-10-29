@@ -368,11 +368,11 @@ muy cercana a $1$ que el error de dicho promedio est\'{a} acotado por
 $\frac{3S}{\sqrt{N}}$.
 
 %%%
-Se realizan 20 simulaciones  
+Se realizan 100 simulaciones  
 de la integral \eqref{integralcontrans}, resultando el
-estimador de tiempo medio de vuelo $\langle T \rangle = 34.833650$ horas y el desv\'io muestral
-$S = 0.968095$ horas. Se determina que para un nivel de significaci\'on del $5\%$, el tiempo medio de vuelo
-del sistema de propulsi\'on WARP pertenece al rango $ 34.83 \pm 0.453 $ horas.
+estimador de tiempo medio de vuelo $\langle T \rangle = 34.734553$ horas y el desv\'io muestral
+$S = 0.951669$ horas. Se determina que para un nivel de significaci\'on del $5\%$, el tiempo medio de vuelo
+del sistema de propulsi\'on WARP pertenece al rango $ 34.83 \pm 0.199 $ horas.
 
 \begin{table}[h]
 \label{seeds}
@@ -444,6 +444,13 @@ generados}
 \includegraphics[scale=0.8]{graficos/tiemposvuelo}
 \caption{Tiempos medios de vuelo vs. Simulaciones}
 \label{fig:warp}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/cotaerror}
+\caption{Cota del error de vuelo vs. Simulaciones}
+\label{fig:error}
 \end{figure*}
 
 \end{document}
