@@ -340,7 +340,35 @@ se multiplica por \eqref{jacobiano}, y se obtiene la integral transformada:
 
 Para la realizaci\'on de la simulaci\'on del sistema mediante el m\'etodo de Montecarlo 
 se utiliza el generador de n\'umeros pseudo-aleatorios de L'Ecuyer obtenido en la secci\'on \ref{pruebagenerador},
-calculando 5 secuencias correspondientes a $u_i \in [0,1]$. Se realizan 20 simulaciones  
+calculando 5 secuencias correspondientes a $u_i \in [0,1]$.
+%%%
+Si consideramos la variable aleatoria $Z = T_{1} + T_{2} + \dots + T_{N}$,
+para $N$ suficientemente grande $Z$ se aproxima a una $VA$ con distribuci\'{o}n
+normal utilizando el teorema del l\'{i}mite central.
+
+Aplicando la regla de las $3S$ se determina que 
+
+\begin{equation}
+P(a - 3S \le Z \le a + 3S)
+\approx 0.997
+\end{equation}
+
+donde se considera que $a$ es la media muestral de $Z$. Operando
+algebraicamente se obtiene la expresi\'{o}n 
+
+\begin{equation}
+\nonumber
+P(|\sum \frac{T_{i}}{N-m}|\le \frac{3S}{\sqrt{N}}) \approx 0.997
+\end{equation}
+ donde $m$ representa el valor esperado
+de $T_{i}$.
+Esto significa que podemos estimar el valor medio de la $VA$ $T$ calculando
+el promedio de las distintas muestras obtenidas, sabiendo con una probabilidad
+muy cercana a $1$ que el error de dicho promedio est\'{a} acotado por 
+$\frac{3S}{\sqrt{N}}$.
+
+%%%
+Se realizan 20 simulaciones  
 de la integral \eqref{integralcontrans}, resultando el
 estimador de tiempo medio de vuelo $\langle T \rangle = 34.833650$ horas y el desv\'io muestral
 $S = 0.968095$ horas. Se determina que para un nivel de significaci\'on del $5\%$, el tiempo medio de vuelo
