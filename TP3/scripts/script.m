@@ -26,21 +26,7 @@ g2z = u(3:nu);
 
 clearplot;
 hold off;
-
-plot(g1x, g1y);
-print('duplas.eps', '-deps');
-
-
-stairs(clases);
-print('clases.eps', '-deps');
-
 chicero = chival(clases,valesperado);
-
-if chicero > chicritico
-	printf("Se rechaza la hipotesis H0 de que la secuencia proviene de una distribucion uniforme: %f > %f\n",chicero,chicritico);
-else
-	printf("No se rechaza la hipotesis H0 de que la secuencia proviene de una distribucion uniforme: %f <= %f\n",chicero,chicritico);
-end
 
 % aca hay que hacer el plot 3d con g2x, g2y, g2z
 
@@ -76,7 +62,7 @@ seedU5(2)=175;
 [sec5,exis5,clases5] = lecuyeg(seedU5(1),seedU5(2));
 
 sumsteps = 100;
-cant = 20;
+cant = 100;
 
 for i=1:cant
 	T(i) = monteintegrate(sec1,sec2,sec3,sec4,sec5,sumsteps);
@@ -85,7 +71,22 @@ for i=1:cant
 	sec3 = sec3(sumsteps:length(sec3));
 	sec4 = sec4(sumsteps:length(sec4));
 	sec5 = sec5(sumsteps:length(sec5));
+	if (i > 1)
+		aux = std(T);
+		Tdesv2(i) = aux;
+		tdev2(i) = (( tstudent * aux ) / sqrt(i));
+		error(i) = 3 * aux/sqrt(i);
+	endif
 end
+
+%printf("llego");
+error(1) = 5;
+plot(1:cant, error);
+xlabel('Simulaciones');
+ylabel('Cota del Error');
+print('cotaerror.eps', '-deps');
+
+pause(20);
 
 Tprom = mean(T);
 for i=1:cant
@@ -97,10 +98,12 @@ Tdesv = std(T);
 tdeviation = ( tstudent * Tdesv ) / sqrt(cant);
 
 plot(T,"+",taux,"-");
+%print('tiemposvuelo.eps', '-deps');
 xlabel('Simulaciones');
 ylabel('Tiempo de vuelo medio (horas)');
 legend('Tiempo de Vuelo medio','Tiempo de vuelo');
 print('tiemposvuelo.eps', '-deps');
+
 
 printf("Con nivel de significacion 5%% , el tiempo promedio de WARP esta comprendido en el rango: %f +/- %f (%f)\n",Tprom,tdeviation, Tdesv);
 
