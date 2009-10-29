@@ -58,12 +58,12 @@ end
 %	Propulsor : exponencial, tiempo medio 10 horas
 %
 
-seedU1(1)=13;
-seedU1(2)=20;
-seedU2(1)=52;
-seedU2(2)=87;
-seedU3(1)=101;
-seedU3(2)=115;
+seedU1(1)=4;
+seedU1(2)=19;
+seedU2(1)=27;
+seedU2(2)=54;
+seedU3(1)=73;
+seedU3(2)=98;
 seedU4(1)=101;
 seedU4(2)=135;
 seedU5(1)=141;
@@ -97,6 +97,9 @@ Tdesv = std(T);
 tdeviation = ( tstudent * Tdesv ) / sqrt(cant);
 
 plot(T,"+",taux,"-");
+xlabel('Simulaciones');
+ylabel('Tiempo de vuelo medio (horas)');
+legend('Tiempo de Vuelo medio','Tiempo de vuelo');
 print('tiemposvuelo.eps', '-deps');
 
 printf("Con nivel de significacion 5%% , el tiempo promedio de WARP esta comprendido en el rango: %f +/- %f (%f)\n",Tprom,tdeviation, Tdesv);
