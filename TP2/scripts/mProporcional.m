@@ -9,7 +9,7 @@ I   = 0.004;
 h   = 0.01;
 
 %Vector de tiempo
-t = 0 : h : 350;
+t = 0 : h : 5;
 
 
 %Armado de vectores
