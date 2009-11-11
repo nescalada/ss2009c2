@@ -1,0 +1,36 @@
+Sistema de cola de servidor simple
+
+Tiempo medio entre arribos       1.000 minutos
+
+Tiempo medio de servicio         0.800 minutos
+
+Numero de clientes                   9000
+
+
+
+Tiempo medio en cola:              2.799 minutos
+
+
+
+Tiempo medio en el sistema:              3.499 minutos
+
+Longitud media de la cola:             2.736
+
+Longitud media en el sistema:             3.518
+
+Utilizacion del servidor:              0.781
+
+Simulacion finalizada a:            9208.163 minutos
+
+Costo cliente por hora:               0.500 $
+
+Costo cliente acumulado:           12598.368 $
+
+Costo sistema por hora:               0.300 $
+
+Costo sistema acumulado:            2762.449 $
+
+Costo total (sistema + clientes):           15360.817 $
+
+Costo total medio (sistema+clientes)/tiempo_total:               1.668 $
+
