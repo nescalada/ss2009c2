@@ -41,6 +41,12 @@ global total_of_delays;
 pasitos=30;
 calculo=zeros(1,pasitos);
 calculo2=zeros(1,pasitos);
+calculo3=zeros(1,pasitos);
+calculo4=zeros(1,pasitos);
+calculo5=zeros(1,pasitos);
+calculo6=zeros(1,pasitos);
+calculo7=zeros(1,pasitos);
+
 
 for i=1:pasitos
 
@@ -97,13 +103,22 @@ for i=1:pasitos
 	resp=report2(outfile);
 	calculo(i) =  resp(1);%Guardo el primero parametro (Longitud media de cola)
 	calculo2(i) = resp(2);%Guardo el segundo parametro (Longitud media del sistema)
+    calculo3(i) = resp(3);%costo cliente
+    calculo4(i) = resp(4);%costo sistema
+    calculo5(i) = resp(5);%costo sistema acumulado
+    calculo6(i) = resp(6);%tiempo medio del sistema
+    calculo7(i) = resp(7);%Utilizacion del servidor
 
 	fclose(inpfile);
 	fclose(outfile);
 	fclose(timfile);
 end
 
-calculo
-calculo2
 printf("La media de %d simulaciones para logitud media de cola: %16.3f\n",pasitos,mean(calculo));
 printf("La media de %d simulaciones para longitud media del sistema: %16.3f\n",pasitos,mean(calculo2));
+printf("La media de %d simulaciones para costo cliente: %16.3f\n",pasitos,mean(calculo3));
+printf("La media de %d simulaciones para costo sistemaa: %16.3f\n",pasitos,mean(calculo4));
+printf("La media de %d simulaciones para costo sistema acumulado: %16.3f\n",pasitos,mean(calculo5));
+printf("La media de %d simulaciones para tiempo medio del sistema: %16.3f\n",pasitos,mean(calculo6));
+printf("La media de %d simulaciones para utilizacion del servidor: %16.3f\n",pasitos,mean(calculo7));
+

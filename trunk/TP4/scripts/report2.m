@@ -37,29 +37,34 @@ fprintf(outfile, "\n\nTiempo medio en cola:   %16.3f minutos\n\n", ...
 
 %UBER HAXOR
 %W en el sistema es Wq / rho
-fprintf(outfile, "\n\nTiempo medio en el sistema:   %16.3f minutos\n\n", ...
-        (total_of_delays / num_custs_delayed)/(mean_interarrival/(1/mean_service)));
+%fprintf(outfile, "\n\nTiempo medio en el sistema:   %16.3f minutos\n\n", ...
+%        (total_of_delays / num_custs_delayed)/(mean_interarrival/(1/mean_service)));
 		
 		
-fprintf(outfile, "Longitud media de la cola:  %16.3f\n\n", ...
-		area_num_in_q / time);
-fprintf(outfile, "Longitud media en el sistema:  %16.3f\n\n", ...
-		area_num_in_sys / time);
-fprintf(outfile, "Utilizacion del servidor:   %16.3f\n\n", ...
-		area_server_status / time);
-fprintf(outfile, "Simulacion finalizada a:    %16.3f minutos\n\n", time);
+%fprintf(outfile, "Longitud media de la cola:  %16.3f\n\n", ...
+%		area_num_in_q / time);
+%fprintf(outfile, "Longitud media en el sistema:  %16.3f\n\n", ...
+%		area_num_in_sys / time);
+%fprintf(outfile, "Utilizacion del servidor:   %16.3f\n\n", ...
+%		area_server_status / time);
+%fprintf(outfile, "Simulacion finalizada a:    %16.3f minutos\n\n", time);
 
 
-fprintf(outfile, "Costo cliente por hora:    %16.3f $\n\n", costo_cliente);
-fprintf(outfile, "Costo cliente acumulado:    %16.3f $\n\n", costo_cliente_acumulado);
-fprintf(outfile, "Costo sistema por hora:    %16.3f $\n\n", costo_sistema);
-fprintf(outfile, "Costo sistema acumulado:    %16.3f $\n\n", costo_sistema_acumulado);
+%fprintf(outfile, "Costo cliente por hora:    %16.3f $\n\n", costo_cliente);
+%fprintf(outfile, "Costo cliente acumulado:    %16.3f $\n\n", costo_cliente_acumulado);
+%fprintf(outfile, "Costo sistema por hora:    %16.3f $\n\n", costo_sistema);
+%fprintf(outfile, "Costo sistema acumulado:    %16.3f $\n\n", costo_sistema_acumulado);
 
-fprintf(outfile, "Costo total (sistema + clientes):    %16.3f $\n\n", costo_cliente_acumulado+costo_sistema_acumulado);
-fprintf(outfile, "Costo total medio (sistema+clientes)/tiempo_total:    %16.3f $\n\n", (costo_cliente_acumulado+costo_sistema_acumulado)/time);
+%fprintf(outfile, "Costo total (sistema + clientes):    %16.3f $\n\n", costo_cliente_acumulado+costo_sistema_acumulado);
+%fprintf(outfile, "Costo total medio (sistema+clientes)/tiempo_total:    %16.3f $\n\n", (costo_cliente_acumulado+costo_sistema_acumulado)/time);
 
 %Pongo los parametros que le quiero calcular la media
 respuesta(1)= area_num_in_q / time; 	%Longitud media de la cola
 respuesta(2)= area_num_in_sys / time; %Longitud media del sistema 
+respuesta(3)= costo_cliente;
+respuesta(4)= costo_sistema;
+respuesta(5)= costo_sistema_acumulado;
+respuesta(6)= (total_of_delays / num_custs_delayed)/(mean_interarrival/(1/mean_service)); %Tiempo medio en el sistema
+respuesta(7)= area_server_status / time; %Utilizacion del servidor
 
 return;
