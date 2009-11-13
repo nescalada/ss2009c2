@@ -32,8 +32,8 @@ global time_last_event;
 global time_next_event;
 global total_of_delays;
 
-fprintf(outfile, "\n\nTiempo medio en cola:   %16.3f minutos\n\n", ...
-        total_of_delays / num_custs_delayed);
+%fprintf(outfile, "\n\nTiempo medio en cola:   %16.3f minutos\n\n", ...
+%        total_of_delays / num_custs_delayed);
 
 %UBER HAXOR
 %W en el sistema es Wq / rho

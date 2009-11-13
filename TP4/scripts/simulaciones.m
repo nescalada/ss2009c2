@@ -4,6 +4,12 @@
 % Declaracion de constantes y variables:
 clear all
 
+%Valores sacados de teorico.m
+longitudMediaColaReal=3.2; %Lq
+longitudMediaDelSistemaReal=4; %L
+%Cantidad de simulaciones
+pasitos=250;
+
 global Q_LIMIT = 100;
 global BUSY    = 1;
 global IDLE    = 0;
@@ -37,8 +43,7 @@ global total_of_delays;
 
 
 
-%Cantidad de simulaciones
-pasitos=30;
+
 calculo=zeros(1,pasitos);
 calculo2=zeros(1,pasitos);
 calculo3=zeros(1,pasitos);
@@ -122,3 +127,6 @@ printf("La media de %d simulaciones para costo sistema acumulado: %16.3f\n",pasi
 printf("La media de %d simulaciones para tiempo medio del sistema: %16.3f\n",pasitos,mean(calculo6));
 printf("La media de %d simulaciones para utilizacion del servidor: %16.3f\n",pasitos,mean(calculo7));
 
+
+printf("El error de la media de %d simulaciones para logitud media de cola: %16.3f %%\n",pasitos,abs(mean(calculo)-longitudMediaColaReal)/longitudMediaColaReal*100);
+printf("El error de la media de %d simulaciones para logitud media del sistema: %16.3f %%\n",pasitos,abs(mean(calculo)-longitudMediaDelSistemaReal)/longitudMediaDelSistemaReal*100);
