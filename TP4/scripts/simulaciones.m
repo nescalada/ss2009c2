@@ -8,7 +8,7 @@ clear all
 longitudMediaColaReal=3.2; %Lq
 longitudMediaDelSistemaReal=4; %L
 %Cantidad de simulaciones
-pasitos=250;
+pasitos=50;
 
 global Q_LIMIT = 100;
 global BUSY    = 1;
@@ -129,4 +129,4 @@ printf("La media de %d simulaciones para utilizacion del servidor: %16.3f\n",pas
 
 
 printf("El error de la media de %d simulaciones para logitud media de cola: %16.3f %%\n",pasitos,abs(mean(calculo)-longitudMediaColaReal)/longitudMediaColaReal*100);
-printf("El error de la media de %d simulaciones para logitud media del sistema: %16.3f %%\n",pasitos,abs(mean(calculo)-longitudMediaDelSistemaReal)/longitudMediaDelSistemaReal*100);
+printf("El error de la media de %d simulaciones para logitud media del sistema: %16.3f %%\n",pasitos,abs(mean(calculo2)-longitudMediaDelSistemaReal)/longitudMediaDelSistemaReal*100);
