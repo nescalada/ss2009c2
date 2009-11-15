@@ -39,11 +39,15 @@ Las colas se utilizan en sistemas inform\'{a}ticos, transportes y operaciones
 de investigaci\'{o}n, entre otros. Los objetos, personas o eventos son tomados 
 como datos que se almacenan para su posterior procesamiento.
 
-La cola simple es el sistema m\'{a}s sencillo de analizar mediante una
-simulaci\'{o}n por eventos discretos.
+
+La cola simple, denominada $M/M/1/\infty/FIFO$ o simplemente $M/M/1$, es el 
+sistema m\'{a}s sencillo de analizar mediante una simulaci\'{o}n por eventos 
+discretos.
+
 
 El sistema de cola simple se encuentra caracterizado principalmente por el 
 tiempo necesario para atender a un cliente y la tasa de llegada de los mismos.
+
 
 En la secci\'{o}n \ref{modelo} se describe el modelo de cola simple y los
 par\'{a}metros involucrados. En la secci\'{o}n \ref{simulacion} se realizan
@@ -51,8 +55,94 @@ las simulaciones, se estudia el comportamiento del sistema y se analiza
 el costo operativo resultante. Finalmente, se exponen las conclusiones en 
 la secci\'{o}n \ref{conclusiones}.
 
-%TODO modelo de cola simple
 \section{Modelo de cola simple}\label{modelo}
+
+Este modelo asume que los clientes llegan al sistema mediante un proceso de
+Poisson con una tasa media de \\ $\lambda[clientes/hora]$. Tambi\'{e}n se asume
+que el servidor atiende a cada uno de los clientes con un tiempo de servicio
+distribuido en forma exponencial con media $1/\mu$.
+
+
+Si cuando llega un nuevo cliente el servidor se encuentra libre, entonces el 
+mismo es atendido en forma inmediata. Caso contrario, el cliente debe ingresar
+en la cola y esperar su turno.
+
+
+Resulta de inter\'{e}s poder establecer las probabilidades en estado estacionario,
+cuando el sistema se encuentra en equilibrio:
+
+\begin{equation}
+\label{probabilidad_largo_plazo}
+p_{n} = \lim_{t \rightarrow \infty} P \{ N_{t} = n \}
+\end{equation}
+
+donde $N_{t}$ es la cantidad de clientes en el sistema en el instante $t$.
+Generalizando para el estado $n$ se obtiene una relaci\'{o}n de recurrencia
+cuya soluci\'{o}n es:
+
+\begin{equation}
+\label{prob_estado_estacionario}
+p_{n} = \left( \frac{\lambda}{\mu} \right)^{n} p_{0}
+\end{equation}
+
+con condiciones iniciales
+
+\begin{equation}
+\label{prob_estado_estacionario_ci}
+p_{1} = \frac{\lambda}{\mu} p_{0}
+\end{equation}
+
+
+El factor $\rho = \lambda / \mu$ se denomina intensidad de tr\'{a}fico del
+sistema. De esta forma la ecuaci\'{o}n \eqref{prob_estado_estacionario} puede
+reescribirse como:
+
+\begin{equation}
+\label{prob_estado_estacionario_con_rho}
+p_{n} = (1 - \rho) \rho^{n}
+\end{equation}
+
+
+De esta ecuaci\'{o}n se desprende que la intensidad de tr\'{a}fico debe
+cumplir $\rho < 1$ para que el sistema sea estable. El caso $\rho > 1$
+implica que el servidor tarda m\'{a}s tiempo en atender a un cliente que nuevos
+clientes en arribar al sistema, generando as\'{i} una cola cada vez m\'{a}s 
+larga.
+
+
+A partir de las ecuaciones obtenidas es posible describir la longitud media
+de la cola $L_{q}$ y el n\'{u}mero medio de clientes en el sistema $L$ en 
+funci\'{o}n de $\rho$:
+
+\begin{equation}
+\label{longitud_media_en_la_cola}
+L_{q} = \frac{\rho^{2}}{1-\rho}
+\end{equation}
+
+\begin{equation}
+\label{numero_medio_clientes_en_el_sistema}
+L = \frac{\rho}{1-\rho}
+\end{equation}
+
+%TODO citar a este autor
+%D.C. Little
+%A Proof for the Queuing Formula L = W , Operations Research, 9, 1961, pp.383­-387)
+
+El modelo no estar\'{i}a completo sin el an\'{a}lisis del tiempo medio de 
+espera, medida importante en lo que respecta a la performance del sistema
+de colas. El tiempo medio de un individuo en el sistema $W$ y en cola $W_{q}$
+resultan:
+
+\begin{equation}
+\label{tiempo_medio_en_el_sistema}
+W = \frac{1}{\mu - \lambda}
+\end{equation}
+
+\begin{equation}
+\label{tiempo_medio_en_la_cola}
+W_{q} = \frac{\rho}{\mu - \lambda}
+\end{equation}
+
 
 %TODO simulaciones
 \section{Simulaci\'{o}n}\label{simulacion}
