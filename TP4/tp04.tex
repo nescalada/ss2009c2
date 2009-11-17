@@ -144,8 +144,59 @@ W_{q} = \frac{\rho}{\mu - \lambda}
 \end{equation}
 
 
-%TODO simulaciones
 \section{Simulaci\'{o}n}\label{simulacion}
+
+En primer lugar se desea estimar el promedio temporal de clientes en el sistema
+y el promedio temporal de los clientes en la cola, dados por las ecuaciones:
+
+\begin{equation}
+\label{estimo_promedio_temporal_clientes_sistema}
+L = \frac{1}{T} \int_{0}^{T} L(t) dt
+\end{equation}
+
+\begin{equation}
+\label{estimo_promedio_temporal_clientes_cola}
+L_{q} = \frac{1}{T} \int_{0}^{T} q(t) dt
+\end{equation}
+
+La cantidad de clientes en cola en el instante $t$ se encuentra representada por
+la funci\'{o}n $q(t)$. $L(t)$ es la cantidad de clientes en el sistema.
+
+%TODO
+% Decir que parametros usamos.
+% Poner los resultados para la cantidad de simulaciones que hicimos
+% y mostrar que el error al comparar con los valores teóricos es menor al 5%
+
+Resulta sumamente importante estimar tambi\'{e}n el tiempo medio que tarda
+cada cliente desde que arriba al sistema hasta que termina de consumir el
+servicio. 
+
+%TODO
+% Decir que parametros usamos.
+% Poner los resultados para la cantidad de simulaciones que hicimos
+% y mostrar que el error al comparar con los valores teóricos es menor al 5%
+% Graficar L vs W.
+
+Es factible suponer que se incurre en determinados costos al mantener al
+sistema en estado operativo. Los mismos pueden separarse en el costo
+asociado a un cliente que espera, sea $c\frac{\$}{hora\ cliente}$, y el costo
+propio de utilizaci\'{o}n del servidor, $s\frac{\$}{hora}$.
+
+A partir de estas definiciones es posible computar el costo total medio, dado 
+por:
+
+\begin{equation}
+\label{costo_total_medio}
+C = \frac{1}{T} \int_{0}^{T} c(t) dt
+\end{equation}
+
+donde $c(t)$ es el costo total y $T$ es el tiempo de operaci\'{o}n.
+
+%TODO
+% Decir que parametros usamos.
+% Poner los resultados (media de X simulaciones) del costo este.
+% Estimar C en funcion de rho.
+
 
 %TODO conclusiones
 \section{Conclusiones}\label{conclusiones}
