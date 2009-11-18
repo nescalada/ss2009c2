@@ -116,6 +116,7 @@ for n=[800,1600,3200,6400,12800]
 	calculo5(i) = resp(5);%costo sistema acumulado
 	calculo6(i) = resp(6);%tiempo medio del sistema
 	calculo7(i) = resp(7);%Utilizacion del servidor
+	calculo8(i) = resp(8);%Tiempo medio en cola
 	i=i+1;
 	
 	fclose(inpfile);
