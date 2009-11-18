@@ -3,7 +3,7 @@
 %
 % Declaracion de constantes y variables:
 clear all
-
+hold off;
 %Valores sacados de teorico.m
 longitudMediaColaReal=3.2; %Lq
 longitudMediaDelSistemaReal=4; %L
@@ -42,20 +42,20 @@ global time_next_event;
 global total_of_delays;
 
 
+vec= [1,1.25,1.5,1.75,2];
 
+calculo=zeros(1,length(vec));
+calculo2=zeros(1,length(vec));
+calculo3=zeros(1,length(vec));
+calculo4=zeros(1,length(vec));
+calculo5=zeros(1,length(vec));
+calculo6=zeros(1,length(vec));
+calculo7=zeros(1,length(vec));
+calculo8=zeros(1,length(vec));
+i=1;
 
-calculo=zeros(1,pasitos);
-calculo2=zeros(1,pasitos);
-calculo3=zeros(1,pasitos);
-calculo4=zeros(1,pasitos);
-calculo5=zeros(1,pasitos);
-calculo6=zeros(1,pasitos);
-calculo7=zeros(1,pasitos);
-calculo8=zeros(1,pasitos);
-
-
-for i=1:pasitos
-
+for mu=[0.15,0.25,0.5,0.75,0.8]
+	mu
 	% Abre los archivos I/O
 	inpfile = fopen('mm1.inp','r');
 	outfile = fopen('mm1.out','w');
@@ -65,10 +65,16 @@ for i=1:pasitos
 	num_events = 2;
 	
 	% Lee el archivo de entrada
+	%Los parametros son Arrivos: Lambda, Tiempo que tarda el sistema en atender un cliente (1/mu) y finalmente cantidad de personas n
 	xdata = fscanf(inpfile,'%f %f %f',[1 3]);
 	mean_interarrival   = xdata(1);
-	mean_service        = xdata(2);
+	%mean_interarrival   = lambda;
+	%mean_service        = xdata(2);
+	mean_service        = mu;
 	num_delays_required = xdata(3);
+	%num_delays_required = n;
+	
+	
 	
 	% Escribe los encabezados de los reportes y parametros de entrada
 	fprintf(outfile,'Sistema de cola de servidor simple\n\n');
@@ -109,26 +115,25 @@ for i=1:pasitos
 	resp=report2(outfile);
 	calculo(i) =  resp(1);%Guardo el primero parametro (Longitud media de cola)
 	calculo2(i) = resp(2);%Guardo el segundo parametro (Longitud media del sistema)
-    calculo3(i) = resp(3);%costo cliente
-    calculo4(i) = resp(4);%costo sistema
-    calculo5(i) = resp(5);%costo sistema acumulado
-    calculo6(i) = resp(6);%tiempo medio del sistema
-    calculo7(i) = resp(7);%Utilizacion del servidor
-		calculo8(i) = resp(8);%Tiempo medio en cola
-
+  calculo3(i) = resp(3);%costo cliente
+	calculo4(i) = resp(4);%costo sistema
+	calculo5(i) = resp(5);%costo sistema acumulado
+	calculo6(i) = resp(6);%tiempo medio del sistema
+	calculo7(i) = resp(7);%Utilizacion del servidor
+	calculo8(i) = resp(8);%Tiempo medio en cola
+	i=i+1;
+	
 	fclose(inpfile);
 	fclose(outfile);
 	fclose(timfile);
 end
+hold on;
+calculo
+calculo2
+plot([0.15,0.25,0.5,0.75,0.8],calculo6,'b*');
+plot([0.15,0.25,0.5,0.75,0.8],calculo8,'b+');
+legend('Tiempo medio en el sistema','Tiempo medio en cola');
+xlabel('Valores del parametro mu');
+ylabel('Tiempo(minutos)');
+print -deps tMediomu.eps
 
-printf("La media de %d simulaciones para logitud media de cola: %16.3f\n",pasitos,mean(calculo));
-printf("La media de %d simulaciones para longitud media del sistema: %16.3f\n",pasitos,mean(calculo2));
-printf("La media de %d simulaciones para costo cliente: %16.3f\n",pasitos,mean(calculo3));
-printf("La media de %d simulaciones para costo sistemaa: %16.3f\n",pasitos,mean(calculo4));
-printf("La media de %d simulaciones para costo sistema acumulado: %16.3f\n",pasitos,mean(calculo5));
-printf("La media de %d simulaciones para tiempo medio del sistema: %16.3f\n",pasitos,mean(calculo6));
-printf("La media de %d simulaciones para utilizacion del servidor: %16.3f\n",pasitos,mean(calculo7));
-
-
-printf("El error de la media de %d simulaciones para logitud media de cola: %16.3f %%\n",pasitos,abs(mean(calculo)-longitudMediaColaReal)/longitudMediaColaReal*100);
-printf("El error de la media de %d simulaciones para logitud media del sistema: %16.3f %%\n",pasitos,abs(mean(calculo2)-longitudMediaDelSistemaReal)/longitudMediaDelSistemaReal*100);
