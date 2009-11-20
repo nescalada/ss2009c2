@@ -41,8 +41,8 @@ global time_last_event;
 global time_next_event;
 global total_of_delays;
 
+vec=[1:0.15:5]
 
-vec= [1,1.25,1.5,1.75,2];
 
 calculo=zeros(1,length(vec));
 calculo2=zeros(1,length(vec));
@@ -54,7 +54,7 @@ calculo7=zeros(1,length(vec));
 calculo8=zeros(1,length(vec));
 i=1;
 
-for lambda=[1,1.25,1.5,1.75,2]
+for lambda=vec
 	lambda
 	% Abre los archivos I/O
 	inpfile = fopen('mm1.inp','r');
@@ -126,11 +126,12 @@ for lambda=[1,1.25,1.5,1.75,2]
 	fclose(outfile);
 	fclose(timfile);
 end
+hold off;
 hold on;
 calculo
 calculo2
-plot([1,1.25,1.5,1.75,2],calculo6,'b*');
-plot([1,1.25,1.5,1.75,2],calculo8,'b+');
+plot(vec,calculo6,'b*-');
+plot(vec,calculo8,'b+-');
 legend('Tiempo medio en el sistema','Tiempo medio en cola');
 xlabel('Valores del parametro lambda');
 ylabel('Tiempo(minutos)');
