@@ -42,7 +42,7 @@ global time_next_event;
 global total_of_delays;
 
 
-vec= [1,1.25,1.5,1.75,2];
+vec= [0.01:0.05:0.9];
 
 calculo=zeros(1,length(vec));
 calculo2=zeros(1,length(vec));
@@ -54,7 +54,7 @@ calculo7=zeros(1,length(vec));
 calculo8=zeros(1,length(vec));
 i=1;
 
-for mu=[0.15,0.25,0.5,0.75,0.8]
+for mu=vec
 	mu
 	% Abre los archivos I/O
 	inpfile = fopen('mm1.inp','r');
@@ -130,8 +130,8 @@ end
 hold on;
 calculo
 calculo2
-plot([0.15,0.25,0.5,0.75,0.8],calculo6,'b*');
-plot([0.15,0.25,0.5,0.75,0.8],calculo8,'b+');
+plot(vec,calculo6,'b*-');
+plot(vec,calculo8,'b+-');
 legend('Tiempo medio en el sistema','Tiempo medio en cola');
 xlabel('Valores del parametro mu');
 ylabel('Tiempo(minutos)');

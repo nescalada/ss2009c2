@@ -42,7 +42,7 @@ global time_next_event;
 global total_of_delays;
 
 
-vec= [800,1600,3200,6400,12800];
+vec= [800,1300,1800,2300,2800,3300,3800,4300,4800,5300,5800,6300,6800,7300,7800,8300,8800,9300,9800,10300,10800,11300,11800,12300,12800]
 
 calculo=zeros(1,length(vec));
 calculo2=zeros(1,length(vec));
@@ -53,7 +53,7 @@ calculo6=zeros(1,length(vec));
 calculo7=zeros(1,length(vec));
 i=1;
 
-for n=[800,1600,3200,6400,12800]
+for n = vec
 	
 	
 	% Abre los archivos I/O
@@ -124,12 +124,13 @@ for n=[800,1600,3200,6400,12800]
 	fclose(timfile);
 end
 hold on;
+
 calculo
 calculo2
-plot([800,1600,3200,6400,12800],calculo,'b*');
-plot([800,1600,3200,6400,12800],calculo2,'b+');
+plot(vec,calculo,'b*-');
+plot(vec,calculo2,'b+-');
 legend('Longitud media de la cola','Longitud media en el sistema');
-xlabel('Cantidad de clientes');
-ylabel('Longitudes(metros)');
+xlabel('Cantidad total de personas enviadas a razon lambda(clientes/hora).');
+ylabel('Cantidad de personas en la cola');
 print -deps lMedia.eps
 
