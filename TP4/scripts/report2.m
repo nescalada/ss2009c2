@@ -67,5 +67,6 @@ respuesta(5)= costo_sistema_acumulado;
 respuesta(6)= (total_of_delays / num_custs_delayed)/(mean_interarrival/(1/mean_service)); %Tiempo medio en el sistema
 respuesta(7)= area_server_status / time; %Utilizacion del servidor
 respuesta(8)= total_of_delays / num_custs_delayed; %Tiempo medio en cola
+respuesta(9)=(costo_cliente_acumulado+costo_sistema_acumulado)/time;%Costo total medio
 
 return;

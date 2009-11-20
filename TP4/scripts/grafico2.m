@@ -52,6 +52,7 @@ calculo5=zeros(1,length(vec));
 calculo6=zeros(1,length(vec));
 calculo7=zeros(1,length(vec));
 calculo8=zeros(1,length(vec));
+calculo9=zeros(1,length(vec));
 i=1;
 
 for lambda=vec
@@ -114,12 +115,13 @@ for lambda=vec
 	resp=report2(outfile);
 	calculo(i) =  resp(1);%Guardo el primero parametro (Longitud media de cola)
 	calculo2(i) = resp(2);%Guardo el segundo parametro (Longitud media del sistema)
-  calculo3(i) = resp(3);%costo cliente
+  	calculo3(i) = resp(3);%costo cliente
 	calculo4(i) = resp(4);%costo sistema
 	calculo5(i) = resp(5);%costo sistema acumulado
 	calculo6(i) = resp(6);%tiempo medio del sistema
 	calculo7(i) = resp(7);%Utilizacion del servidor
 	calculo8(i) = resp(8);%Tiempo medio en cola
+	calculo9(i) = resp(9);
 	i=i+1;
 	
 	fclose(inpfile);
@@ -133,7 +135,7 @@ calculo2
 plot(vec,calculo6,'b*-');
 plot(vec,calculo8,'b+-');
 legend('Tiempo medio en el sistema','Tiempo medio en cola');
-xlabel('Valores del parametro lambda');
+xlabel('Valores del parametro \lambda');
 ylabel('Tiempo(minutos)');
 print -deps tMedio.eps
 
