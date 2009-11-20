@@ -162,7 +162,14 @@ L_{q} = \frac{1}{T} \int_{0}^{T} q(t) dt
 La cantidad de clientes en cola en el instante $t$ se encuentra representada por
 la funci\'{o}n $q(t)$. $L(t)$ es la cantidad de clientes en el sistema.
 
-%TODO
+Para las simulaciones se fijaron algunos parametros: tasa media de llegada de 
+clientes ($\lambda[clientes/hora]=1$), el valor de la media del tiempo que tarda 
+en atender el servidor a cada uno de los clientes en $1.25$ es decir $\mu=0.8$ 
+y por ultimo la cantidad total de clientes ($n$) igual a $9000$.   
+
+El valor medio de clientes en cola calculado teoricamente es $3.2$. El valor
+medio que se obtiene luego de $50$ simulaciones es $3.241$. El error
+relativo de este valor es menor al $5\%$($0.295\%$).
 % Decir que parametros usamos.
 % Poner los resultados para la cantidad de simulaciones que hicimos
 % y mostrar que el error al comparar con los valores teóricos es menor al 5%
