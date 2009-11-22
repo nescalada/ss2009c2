@@ -134,6 +134,6 @@ plot(vec,calculo,'b*-');
 plot(vec,calculo2,'b+-');
 legend('Longitud media de la cola','Longitud media en el sistema');
 xlabel('Cantidad total de personas enviadas a razon \lambda(clientes/hora).');
-ylabel('Cantidad de personas en la cola');
+ylabel('Cantidad de personas');
 print -deps lMedia.eps
 
