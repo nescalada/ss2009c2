@@ -4,33 +4,5 @@ Tiempo medio entre arribos       1.000 minutos
 
 Tiempo medio de servicio         0.800 minutos
 
-Numero de clientes                   9000
-
-
-
-Tiempo medio en cola:              3.143 minutos
-
-
-
-Tiempo medio en el sistema:              3.929 minutos
-
-Longitud media de la cola:             3.100
-
-Longitud media en el sistema:             3.893
-
-Utilizacion del servidor:              0.793
-
-Simulacion finalizada a:            9128.993 minutos
-
-Costo cliente por hora:               0.500 $
-
-Costo cliente acumulado:           14150.469 $
-
-Costo sistema por hora:               0.300 $
-
-Costo sistema acumulado:            2738.698 $
-
-Costo total (sistema + clientes):           16889.167 $
-
-Costo total medio (sistema+clientes)/tiempo_total:               1.850 $
+Numero de clientes                  12800
 

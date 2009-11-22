@@ -162,7 +162,7 @@ L_{q} = \frac{1}{T} \int_{0}^{T} q(t) dt
 La cantidad de clientes en cola en el instante $t$ se encuentra representada por
 la funci\'{o}n $q(t)$. $L(t)$ es la cantidad de clientes en el sistema.
 
-Para las simulaciones se fijaron algunos parametros: tasa media de llegada de 
+Para las simulaciones se fijaron algunos par\'{a}metros: tasa media de llegada de 
 clientes ($\lambda[clientes/hora]=1$), el valor de la media del tiempo que tarda 
 en atender el servidor a cada uno de los clientes en $1.25$ es decir $\mu=0.8$ 
 y por ultimo la cantidad total de clientes ($n$) igual a $9000$.   
@@ -178,7 +178,17 @@ Resulta sumamente importante estimar tambi\'{e}n el tiempo medio que tarda
 cada cliente desde que arriba al sistema hasta que termina de consumir el
 servicio. 
 
-%TODO
+Al variar el tiempo en que un individuo se encuentra en el sistema, se obtiene 
+distintas cantidades de individuos en el sistema, en la figura ~\ref{fig:LvsW}
+se observa los resultados de la simulaci\'{o}n.
+
+En la figura ~\ref{fig:mu} se observa que el tiempo medio de un individuo
+tanto en la cola como en el sistema incrementa a medida que incrementa el par\'{a}metro
+$\mu$. Para este gr\'{a}fico se toman $18$ valores para el par\'{a}metro $\mu$ y se
+calcula para cada uno el tiempo medio de un indivuo en la cola y en el sistema.
+
+En la figura ~\ref{fig:tmediolambda} se aprecia al igual que en el gr\'{a}fico anterior, 
+como varia el tiempo de un individuo en la cola al variar el par\'{a}metro $\lambda$.
 % Decir que parametros usamos.
 % Poner los resultados para la cantidad de simulaciones que hicimos
 % y mostrar que el error al comparar con los valores teóricos es menor al 5%
@@ -199,7 +209,9 @@ C = \frac{1}{T} \int_{0}^{T} c(t) dt
 
 donde $c(t)$ es el costo total y $T$ es el tiempo de operaci\'{o}n.
 
-%TODO
+En las figuras ~\ref{fig:ctmm} y ~\ref{fig:ctml} se aprecia como varia el costo total medio
+al variar los par\'{a}metros $\mu$ y $\lambda$ respectivamente.
+
 % Decir que parametros usamos.
 % Poner los resultados (media de X simulaciones) del costo este.
 % Estimar C en funcion de rho.
@@ -210,5 +222,45 @@ donde $c(t)$ es el costo total y $T$ es el tiempo de operaci\'{o}n.
 
 En un sistema de cola simple la estabilidad depende exclusivamente de la
 intensidad de tr\'{a}fico.
+
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/LvsW}
+\caption{Valor medio de individuos en el sistema  vs. Tiempo de un individuo en el sistema}
+\label{fig:LvsW}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/tMediomu}
+\caption{Tiempo medio vs. $\mu$}
+\label{fig:mu}
+\end{figure*}
+
+
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/tMedio}
+\caption{Tiempo medio vs. $\lambda$}
+\label{fig:tmediolambda}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/CTMediomu}
+\caption{Costo total medio vs. $\mu$}
+\label{fig:ctmm}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/CTMediolambda}
+\caption{Costo total medio vs. $\lambda$}
+\label{fig:ctml}
+\end{figure*}
+
+
 
 \end{document}
