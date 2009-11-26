@@ -35,8 +35,9 @@ al cliente, servidor simple}
 
 \section{Introducci\'{o}n}\label{introduccion}
 
-Las colas se utilizan en sistemas inform\'{a}ticos, transportes y operaciones 
-de investigaci\'{o}n, entre otros. Los objetos, personas o eventos son tomados 
+Las colas se utilizan en diversos \'{a}mbitos, tales como sistemas 
+inform\'{a}ticos, transportes y operaciones de investigaci\'{o}n, entre otros. 
+Los objetos, personas o eventos son tomados 
 como datos que se almacenan para su posterior procesamiento.
 
 
@@ -130,7 +131,7 @@ L = \frac{\rho}{1-\rho}
 
 El modelo no estar\'{i}a completo sin el an\'{a}lisis del tiempo medio de 
 espera, medida importante en lo que respecta a la performance del sistema
-de colas. El tiempo medio de un individuo en el sistema $W$ y en cola $W_{q}$
+de colas. El tiempo medio de un individuo en el sistema $(W)$ y en cola $(W_{q})$
 resultan:
 
 \begin{equation}
@@ -162,42 +163,48 @@ L_{q} = \frac{1}{T} \int_{0}^{T} q(t) dt
 La cantidad de clientes en cola en el instante $t$ se encuentra representada por
 la funci\'{o}n $q(t)$. $L(t)$ es la cantidad de clientes en el sistema.
 
-Para las simulaciones se fijaron algunos par\'{a}metros: tasa media de llegada de 
-clientes ($\lambda[clientes/hora]=1$), el valor de la media del tiempo que tarda 
-en atender el servidor a cada uno de los clientes en $1.25$ es decir $\mu=0.8$ 
-y por ultimo la cantidad total de clientes ($n$) igual a $9000$.   
 
-El valor medio de clientes en cola calculado teoricamente es $3.2$. El valor
-medio que se obtiene luego de $50$ simulaciones es $3.241$. El error
-relativo de este valor es menor al $5\%$($0.295\%$).
-% Decir que parametros usamos.
-% Poner los resultados para la cantidad de simulaciones que hicimos
-% y mostrar que el error al comparar con los valores teóricos es menor al 5%
+Se comienza estudiando el comportamiento del sistema con una tasa de arribos
+$\lambda = 1$ y un tiempo medio de servicio $1/\mu = 1.25$, ambos indicando
+cantidad de clientes por hora.
+La cantidad total de clientes a ser atendidos por el sistema se fija en $n=9000$.
+
+
+El valor medio de clientes en cola te\'{o}rico para los par\'{a}metros
+especificados resulta aproximadamente $3.2$ clientes. La estimaci\'{o}n luego
+de $50$ simulaciones resulta $3.241$, presentando un error relativo del
+$0.295\%$.
+
 
 Resulta sumamente importante estimar tambi\'{e}n el tiempo medio que tarda
 cada cliente desde que arriba al sistema hasta que termina de consumir el
 servicio. 
 
-Al variar el tiempo en que un individuo se encuentra en el sistema, se obtiene 
-distintas cantidades de individuos en el sistema, en la figura ~\ref{fig:LvsW}
-se observa los resultados de la simulaci\'{o}n.
 
-En la figura ~\ref{fig:mu} se observa que el tiempo medio de un individuo
-tanto en la cola como en el sistema incrementa a medida que incrementa el par\'{a}metro
-$\mu$. Para este gr\'{a}fico se toman $18$ valores para el par\'{a}metro $\mu$ y se
-calcula para cada uno el tiempo medio de un indivuo en la cola y en el sistema.
+En la figura ~\ref{fig:LvsW} se observa como var\'{i}a el tiempo medio en el sistema
+$W$ a medida que la cantidad de clientes arribados aumenta.
 
-En la figura ~\ref{fig:tmediolambda} se aprecia al igual que en el gr\'{a}fico anterior, 
-como varia el tiempo de un individuo en la cola al variar el par\'{a}metro $\lambda$.
-% Decir que parametros usamos.
-% Poner los resultados para la cantidad de simulaciones que hicimos
-% y mostrar que el error al comparar con los valores teóricos es menor al 5%
-% Graficar L vs W.
+\begin{figure*}[hp]
+\centering
+\includegraphics[scale=0.8]{graficos/LvsW}
+\caption{Valor medio de individuos en el sistema  vs. Tiempo de un individuo en el sistema}
+\label{fig:LvsW}
+\end{figure*}
+
+En la figura ~\ref{fig:mu} se observa que el tiempo medio de un individuo,
+tanto en la cola como en el sistema, se incrementa a medida que aumenta el tiempo
+medio que toma al servicio atender al cliente.
+Para este gr\'{a}fico se toman $18$ valores distintos del par\'{a}metro $\mu$ y se
+estudia su impacto en el tiempo medio de un individuo tanto en la cola
+como en el sistema. Se realiza un an\'{a}lisis similar en la figura ~\ref{fig:tmediolambda},
+esta vez con distintos valores del par\'{a}metro $\lambda$.
+
 
 Es factible suponer que se incurre en determinados costos al mantener al
 sistema en estado operativo. Los mismos pueden separarse en el costo
 asociado a un cliente que espera, sea $c\frac{\$}{hora\ cliente}$, y el costo
 propio de utilizaci\'{o}n del servidor, $s\frac{\$}{hora}$.
+
 
 A partir de estas definiciones es posible computar el costo total medio, dado 
 por:
@@ -209,27 +216,24 @@ C = \frac{1}{T} \int_{0}^{T} c(t) dt
 
 donde $c(t)$ es el costo total y $T$ es el tiempo de operaci\'{o}n.
 
-En las figuras ~\ref{fig:ctmm} y ~\ref{fig:ctml} se aprecia como varia el costo total medio
+En las figuras ~\ref{fig:ctmm} y ~\ref{fig:ctml} se presenta la evoluci\'{o}n
+del costo total medio
 al variar los par\'{a}metros $\mu$ y $\lambda$ respectivamente.
 
-% Decir que parametros usamos.
-% Poner los resultados (media de X simulaciones) del costo este.
-% Estimar C en funcion de rho.
 
-
-%TODO conclusiones
 \section{Conclusiones}\label{conclusiones}
 
 En un sistema de cola simple la estabilidad depende exclusivamente de la
-intensidad de tr\'{a}fico.
+intensidad de tr\'{a}fico. Se observa que peque\~{n}as variaciones en la tasa
+de arribos o el tiempo medio de servicio pueden implicar grandes costos 
+asociados.
 
 
-\begin{figure*}[hp]
-\centering
-\includegraphics[scale=0.8]{graficos/LvsW}
-\caption{Valor medio de individuos en el sistema  vs. Tiempo de un individuo en el sistema}
-\label{fig:LvsW}
-\end{figure*}
+Contar con informaci\'{o}n precisa de la cantidad de clientes a atender y la
+frecuencia de llegada permite poder refinar la forma en que se presta el servicio,
+buscando minimizar el tiempo de espera de los clientes y tambi\'{e}n el tiempo
+en que cada servidor se encuentra inactivo.
+
 
 \begin{figure*}[hp]
 \centering
