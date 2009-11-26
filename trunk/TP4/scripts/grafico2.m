@@ -135,7 +135,7 @@ calculo2
 plot(vec,calculo6,'b*-');
 plot(vec,calculo8,'b+-');
 legend('Tiempo medio en el sistema','Tiempo medio en cola');
-xlabel('Valores del parametro \lambda');
-ylabel('Tiempo(minutos)');
+xlabel('Valores del parametro \lambda(clientes/hora)');
+ylabel('Tiempo(horas)');
 print -deps tMedio.eps
 
