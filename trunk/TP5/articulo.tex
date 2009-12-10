@@ -20,6 +20,9 @@ Villa Fernandez Santiago\\
 \maketitle
 
 \section*{\underline{Item a}}
+\subsection{Modelo de intervalo de tiempos entre arribos}
+Para modelar el intervalo de tiempos entre arribos se tienen mediciones del horario en que los clientes llegaron al sistema. Utilizando la regla de Sturges para la elecci'on del n'umero intervalos de clase para los datos medidos. La misma aconseja utilizar $1 + \log_2 n$ intervalos, siendo $n$ la cantidad de datos, se obtiene que se requieren $7.644$ intervalos, utilizando en este caso $8$. Se puede observar en el histograma con los intervalos de tiempos entre arribos (Figura x) que los datos tienden a estar distribuidos exponencialmente. Se realiza un test de bondad de ajuste $\chi^2$ estimando previamente el valor $\lambda$ de la distribuci'on obteniendose un valor de $\lambda = 18.939$ clientes/hora, resultado una anomal'ia cuadr'atica media de $\chi_0^2 = 11.943$. Considerando el valor cr'itico por tablas para $6$ grados de libertad con un nivel de significaci'on de 5\% es $\chi_{6,0.05}^2 = 12.592$ no se refuta la hip'otesis de que los datos provengan de una distribuci'on exponencial. Se realiza un Plot Q-Q para lograr confirmaci'on visual (Figura x) observando que, sobre todo para valores chicos, los cuantiles se encuentran alineados sobre una recta de pendiente $1$. Realizando un test de uniformidad Kolmogorov-Smirnov sobre los tiempos de arribos se obtiene un estad'istico de $D =  0.12686$ para los datos agrupados en $8$ clases. Considerando el valor cr'itico para un nivel de significaci'on de $5\%$ es $D_{7, 0.05} = $, mayor que $D$, el test es satisfactorio. Concluyendo que los tiempos entre arribos para la simulaci'on est'an distribuidos exponencialmente con media $18.939$ clientes/hora.
+
 \section*{\underline{Item b}}
 \section*{\underline{Item c}}
 %Indicar los tipos de eventos y el espacio de eventos
