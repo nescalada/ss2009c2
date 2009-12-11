@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0 EPSF-2.0
 %%Title: plot_qq_e3.eps
-%%Creator: gnuplot 4.2 patchlevel 2 
-%%CreationDate: Thu Dec 10 20:10:07 2009
+%%Creator: gnuplot 4.2 patchlevel 5 
+%%CreationDate: Fri Dec 11 15:55:26 2009
 %%DocumentFonts: (atend)
 %%BoundingBox: 50 50 410 302
 %%EndComments
@@ -44,54 +44,14 @@ systemdict /pdfmark known not {
 SDict begin [
   /Title (plot_qq_e3.eps)
   /Subject (gnuplot plot)
-  /Creator (gnuplot 4.2 patchlevel 2 )
-  /Author (pabloks,,,)
+  /Creator (gnuplot 4.2 patchlevel 5 )
+  /Author (Maximiliano G. Vidal,,,)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Thu Dec 10 20:10:07 2009)
+  /CreationDate (Fri Dec 11 15:55:26 2009)
   /DOCINFO pdfmark
 end
 } ifelse
-/reencodeISO {
-dup dup findfont dup length dict begin
-{ 1 index /FID ne { def }{ pop pop } ifelse } forall
-currentdict /CharStrings known {
-	CharStrings /Idieresis known {
-		/Encoding ISOLatin1Encoding def } if
-} if
-currentdict end definefont
-} def
-/ISOLatin1Encoding [
-/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
-/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
-/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
-/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
-/space/exclam/quotedbl/numbersign/dollar/percent/ampersand/quoteright
-/parenleft/parenright/asterisk/plus/comma/minus/period/slash
-/zero/one/two/three/four/five/six/seven/eight/nine/colon/semicolon
-/less/equal/greater/question/at/A/B/C/D/E/F/G/H/I/J/K/L/M/N
-/O/P/Q/R/S/T/U/V/W/X/Y/Z/bracketleft/backslash/bracketright
-/asciicircum/underscore/quoteleft/a/b/c/d/e/f/g/h/i/j/k/l/m
-/n/o/p/q/r/s/t/u/v/w/x/y/z/braceleft/bar/braceright/asciitilde
-/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
-/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
-/.notdef/dotlessi/grave/acute/circumflex/tilde/macron/breve
-/dotaccent/dieresis/.notdef/ring/cedilla/.notdef/hungarumlaut
-/ogonek/caron/space/exclamdown/cent/sterling/currency/yen/brokenbar
-/section/dieresis/copyright/ordfeminine/guillemotleft/logicalnot
-/hyphen/registered/macron/degree/plusminus/twosuperior/threesuperior
-/acute/mu/paragraph/periodcentered/cedilla/onesuperior/ordmasculine
-/guillemotright/onequarter/onehalf/threequarters/questiondown
-/Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla
-/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex
-/Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis
-/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute
-/Thorn/germandbls/agrave/aacute/acircumflex/atilde/adieresis
-/aring/ae/ccedilla/egrave/eacute/ecircumflex/edieresis/igrave
-/iacute/icircumflex/idieresis/eth/ntilde/ograve/oacute/ocircumflex
-/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis
-/yacute/thorn/ydieresis
-] def
 %
 % Gnuplot Prolog Version 4.2 (August 2006)
 %
@@ -343,7 +303,7 @@ currentdict end definefont
   ColR ColG ColB setrgbcolor} def
 /BoxColFill {gsave Rec PolyFill} def
 /PolyFill {gsave Density fill grestore grestore} def
-/h {rlineto rlineto rlineto gsave fill grestore} bind def
+/h {rlineto rlineto rlineto gsave closepath fill grestore} bind def
 %
 % PostScript Level 1 Pattern Fill routine for rectangles
 % Usage: x y w h s a XX PatternFill
@@ -460,7 +420,33 @@ Level1 {Level1PatternFill} {Level2PatternFill} ifelse
 /Symbol-Oblique /Symbol findfont [1 0 .167 1 0 0] makefont
 dup length dict begin {1 index /FID eq {pop pop} {def} ifelse} forall
 currentdict end definefont pop
-/Helvetica reencodeISO def
+/MFshow {
+   { dup 5 get 3 ge
+     { 5 get 3 eq {gsave} {grestore} ifelse }
+     {dup dup 0 get findfont exch 1 get scalefont setfont
+     [ currentpoint ] exch dup 2 get 0 exch R dup 5 get 2 ne {dup dup 6
+     get exch 4 get {show} {stringwidth pop 0 R} ifelse }if dup 5 get 0 eq
+     {dup 3 get {2 get neg 0 exch R pop} {pop aload pop M} ifelse} {dup 5
+     get 1 eq {dup 2 get exch dup 3 get exch 6 get stringwidth pop -2 div
+     dup 0 R} {dup 6 get stringwidth pop -2 div 0 R 6 get
+     show 2 index {aload pop M neg 3 -1 roll neg R pop pop} {pop pop pop
+     pop aload pop M} ifelse }ifelse }ifelse }
+     ifelse }
+   forall} bind def
+/MFwidth {0 exch { dup 5 get 3 ge { 5 get 3 eq { 0 } { pop } ifelse }
+ {dup 3 get{dup dup 0 get findfont exch 1 get scalefont setfont
+     6 get stringwidth pop add} {pop} ifelse} ifelse} forall} bind def
+/MLshow { currentpoint stroke M
+  0 exch R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/MRshow { currentpoint stroke M
+  exch dup MFwidth neg 3 -1 roll R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/MCshow { currentpoint stroke M
+  exch dup MFwidth -2 div 3 -1 roll R
+  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
+/XYsave    { [( ) 1 2 true false 3 ()] } bind def
+/XYrestore { [( ) 1 2 true false 4 ()] } bind def
 end
 %%EndProlog
 gnudict begin
@@ -470,387 +456,460 @@ gsave
 0 setgray
 newpath
 (Helvetica) findfont 140 scalefont setfont
-1.000 UL
+gsave % colour palette begin
+/maxcolors 64 def
+/HSV2RGB {  exch dup 0.0 eq {pop exch pop dup dup} % achromatic gray
+  { /HSVs exch def /HSVv exch def 6.0 mul dup floor dup 3 1 roll sub
+     /HSVf exch def /HSVi exch cvi def /HSVp HSVv 1.0 HSVs sub mul def
+	 /HSVq HSVv 1.0 HSVs HSVf mul sub mul def 
+	 /HSVt HSVv 1.0 HSVs 1.0 HSVf sub mul sub mul def
+	 /HSVi HSVi 6 mod def 0 HSVi eq {HSVv HSVt HSVp}
+	 {1 HSVi eq {HSVq HSVv HSVp}{2 HSVi eq {HSVp HSVv HSVt}
+	 {3 HSVi eq {HSVp HSVq HSVv}{4 HSVi eq {HSVt HSVp HSVv}
+	 {HSVv HSVp HSVq} ifelse} ifelse} ifelse} ifelse} ifelse
+  } ifelse} def
+/Constrain {
+  dup 0 lt {0 exch pop}{dup 1 gt {1 exch pop} if} ifelse} def
+/YIQ2RGB {
+  3 copy -1.702 mul exch -1.105 mul add add Constrain 4 1 roll
+  3 copy -0.647 mul exch -0.272 mul add add Constrain 5 1 roll
+  0.621 mul exch -0.956 mul add add Constrain 3 1 roll } def
+/CMY2RGB {  1 exch sub exch 1 exch sub 3 2 roll 1 exch sub 3 1 roll exch } def
+/XYZ2RGB {  3 copy -0.9017 mul exch -0.1187 mul add exch 0.0585 mul exch add
+  Constrain 4 1 roll 3 copy -0.0279 mul exch 1.999 mul add exch
+  -0.9844 mul add Constrain 5 1 roll -0.2891 mul exch -0.5338 mul add
+  exch 1.91 mul exch add Constrain 3 1 roll} def
+/SelectSpace {ColorSpace (HSV) eq {HSV2RGB}{ColorSpace (XYZ) eq {
+  XYZ2RGB}{ColorSpace (CMY) eq {CMY2RGB}{ColorSpace (YIQ) eq {YIQ2RGB}
+  if} ifelse} ifelse} ifelse} def
+/InterpolatedColor true def
+/grayindex {/gidx 0 def
+  {GrayA gidx get grayv ge {exit} if /gidx gidx 1 add def} loop} def
+/dgdx {grayv GrayA gidx get sub GrayA gidx 1 sub get
+  GrayA gidx get sub div} def 
+/redvalue {RedA gidx get RedA gidx 1 sub get
+  RedA gidx get sub dgdxval mul add} def
+/greenvalue {GreenA gidx get GreenA gidx 1 sub get
+  GreenA gidx get sub dgdxval mul add} def
+/bluevalue {BlueA gidx get BlueA gidx 1 sub get
+  BlueA gidx get sub dgdxval mul add} def
+/interpolate {
+  grayindex grayv GrayA gidx get sub abs 1e-5 le
+    {RedA gidx get GreenA gidx get BlueA gidx get}
+    {/dgdxval dgdx def redvalue greenvalue bluevalue} ifelse} def
+/GrayA [0 .0159 .0317 .0476 .0635 .0794 .0952 .1111 .127 .1429 .1587 .1746 
+  .1905 .2063 .2222 .2381 .254 .2698 .2857 .3016 .3175 .3333 .3492 .3651 
+  .381 .3968 .4127 .4286 .4444 .4603 .4762 .4921 .5079 .5238 .5397 .5556 
+  .5714 .5873 .6032 .619 .6349 .6508 .6667 .6825 .6984 .7143 .7302 .746 
+  .7619 .7778 .7937 .8095 .8254 .8413 .8571 .873 .8889 .9048 .9206 .9365 
+  .9524 .9683 .9841 1 ] def
+/RedA [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .0238 .0873 .1508 
+  .2143 .2778 .3413 .4048 .4683 .5317 .5952 .6587 .7222 .7857 .8492 .9127 
+  .9762 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .9444 .881 .8175 .754 .6905 .627 
+  .5635 .5 ] def
+/GreenA [0 0 0 0 0 0 0 0 .0079 .0714 .1349 .1984 .2619 .3254 .3889 .4524 
+  .5159 .5794 .6429 .7063 .7698 .8333 .8968 .9603 1 1 1 1 1 1 1 1 1 1 1 1 1 
+  1 1 1 .9603 .8968 .8333 .7698 .7063 .6429 .5794 .5159 .4524 .3889 .3254 
+  .2619 .1984 .1349 .0714 .0079 0 0 0 0 0 0 0 0 ] def
+/BlueA [.5 .5635 .627 .6905 .754 .8175 .881 .9444 1 1 1 1 1 1 1 1 1 1 1 1 1 
+  1 1 1 .9762 .9127 .8492 .7857 .7222 .6587 .5952 .5317 .4683 .4048 .3413 
+  .2778 .2143 .1508 .0873 .0238 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+  0 0 ] def
+/pm3dround {maxcolors 0 gt {dup 1 ge
+	{pop 1} {maxcolors mul floor maxcolors 1 sub div} ifelse} if} def
+/pm3dGamma 1.0 1.5 div def
+/ColorSpace (RGB) def
+Color InterpolatedColor or { % COLOUR vs. GRAY map
+  InterpolatedColor { %% Interpolation vs. RGB-Formula
+    /g {stroke pm3dround /grayv exch def interpolate
+        SelectSpace setrgbcolor} bind def
+  }{
+  /g {stroke pm3dround dup cF7 Constrain exch dup cF5 Constrain exch cF15 Constrain 
+       SelectSpace setrgbcolor} bind def
+  } ifelse
+}{
+  /g {stroke pm3dround pm3dGamma exp setgray} bind def
+} ifelse
+0.500 UL
 LTb
-546 420 M
+854 743 M
 63 0 V
-6353 0 R
+6073 0 R
 -63 0 V
-462 420 M
-(-3) Rshow
-1.000 UL
+stroke
+770 743 M
+[ [(Helvetica) 140.0 0.0 true true 0 (1.8)]
+] -46.7 MRshow
+0.500 UL
 LTb
-546 1162 M
+854 1234 M
 63 0 V
-6353 0 R
+6073 0 R
 -63 0 V
--6437 0 R
-(-2) Rshow
-1.000 UL
+stroke
+770 1234 M
+[ [(Helvetica) 140.0 0.0 true true 0 (1.85)]
+] -46.7 MRshow
+0.500 UL
 LTb
-546 1904 M
+854 1726 M
 63 0 V
-6353 0 R
+6073 0 R
 -63 0 V
--6437 0 R
-(-1) Rshow
-1.000 UL
+stroke
+770 1726 M
+[ [(Helvetica) 140.0 0.0 true true 0 (1.9)]
+] -46.7 MRshow
+0.500 UL
 LTb
-546 2646 M
+854 2218 M
 63 0 V
-6353 0 R
+6073 0 R
 -63 0 V
--6437 0 R
-( 0) Rshow
-1.000 UL
+stroke
+770 2218 M
+[ [(Helvetica) 140.0 0.0 true true 0 (1.95)]
+] -46.7 MRshow
+0.500 UL
 LTb
-546 3388 M
+854 2709 M
 63 0 V
-6353 0 R
+6073 0 R
 -63 0 V
--6437 0 R
-( 1) Rshow
-1.000 UL
+stroke
+770 2709 M
+[ [(Helvetica) 140.0 0.0 true true 0 (2)]
+] -46.7 MRshow
+0.500 UL
 LTb
-546 4130 M
+854 3201 M
 63 0 V
-6353 0 R
+6073 0 R
 -63 0 V
--6437 0 R
-( 2) Rshow
-1.000 UL
+stroke
+770 3201 M
+[ [(Helvetica) 140.0 0.0 true true 0 (2.05)]
+] -46.7 MRshow
+0.500 UL
 LTb
-546 4872 M
+854 3692 M
 63 0 V
-6353 0 R
+6073 0 R
 -63 0 V
--6437 0 R
-( 3) Rshow
-1.000 UL
+stroke
+770 3692 M
+[ [(Helvetica) 140.0 0.0 true true 0 (2.1)]
+] -46.7 MRshow
+0.500 UL
 LTb
-546 420 M
+854 4184 M
+63 0 V
+6073 0 R
+-63 0 V
+stroke
+770 4184 M
+[ [(Helvetica) 140.0 0.0 true true 0 (2.15)]
+] -46.7 MRshow
+0.500 UL
+LTb
+854 4675 M
+63 0 V
+6073 0 R
+-63 0 V
+stroke
+770 4675 M
+[ [(Helvetica) 140.0 0.0 true true 0 (2.2)]
+] -46.7 MRshow
+0.500 UL
+LTb
+1896 448 M
 0 63 V
-0 4389 R
+0 4361 R
 0 -63 V
-546 280 M
-( 1.75) Cshow
-1.000 UL
+stroke
+1896 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 (1.8)]
+] -46.7 MCshow
+0.500 UL
 LTb
-1188 420 M
+3054 448 M
 0 63 V
-0 4389 R
+0 4361 R
 0 -63 V
-0 -4529 R
-( 1.8) Cshow
-1.000 UL
+stroke
+3054 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 (1.9)]
+] -46.7 MCshow
+0.500 UL
 LTb
-1829 420 M
+4211 448 M
 0 63 V
-0 4389 R
+0 4361 R
 0 -63 V
-0 -4529 R
-( 1.85) Cshow
-1.000 UL
+stroke
+4211 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 (2)]
+] -46.7 MCshow
+0.500 UL
 LTb
-2471 420 M
+5369 448 M
 0 63 V
-0 4389 R
+0 4361 R
 0 -63 V
-0 -4529 R
-( 1.9) Cshow
-1.000 UL
+stroke
+5369 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 (2.1)]
+] -46.7 MCshow
+0.500 UL
 LTb
-3112 420 M
+6527 448 M
 0 63 V
-0 4389 R
+0 4361 R
 0 -63 V
-0 -4529 R
-( 1.95) Cshow
-1.000 UL
+stroke
+6527 308 M
+[ [(Helvetica) 140.0 0.0 true true 0 (2.2)]
+] -46.7 MCshow
+0.500 UL
 LTb
-3754 420 M
-0 63 V
-0 4389 R
-0 -63 V
-0 -4529 R
-( 2) Cshow
-1.000 UL
+0.500 UL
 LTb
-4396 420 M
-0 63 V
-0 4389 R
-0 -63 V
-0 -4529 R
-( 2.05) Cshow
-1.000 UL
-LTb
-5037 420 M
-0 63 V
-0 4389 R
-0 -63 V
-0 -4529 R
-( 2.1) Cshow
-1.000 UL
-LTb
-5679 420 M
-0 63 V
-0 4389 R
-0 -63 V
-0 -4529 R
-( 2.15) Cshow
-1.000 UL
-LTb
-6320 420 M
-0 63 V
-0 4389 R
-0 -63 V
-0 -4529 R
-( 2.2) Cshow
-1.000 UL
-LTb
-6962 420 M
-0 63 V
-0 4389 R
-0 -63 V
-0 -4529 R
-( 2.25) Cshow
-1.000 UL
-LTb
-1.000 UL
-LTb
-546 4872 N
-546 420 L
-6416 0 V
-0 4452 V
--6416 0 V
+854 4872 N
+854 448 L
+6136 0 V
+0 4424 V
+-6136 0 V
 Z stroke
 LCb setrgbcolor
-140 2646 M
-currentpoint gsave translate 90 rotate 0 0 M
-(Cuantiles del modelo teorico) Cshow
+280 2660 M
+currentpoint gsave translate 90 rotate 0 0 moveto
+[ [(Helvetica) 140.0 0.0 true true 0 (Cuantiles del modelo teorico)]
+] -46.7 MCshow
 grestore
 LTb
 LCb setrgbcolor
-3754 70 M
-(Cuantiles de la muestra) Cshow
+3922 98 M
+[ [(Helvetica) 140.0 0.0 true true 0 (Cuantiles de la muestra)]
+] -46.7 MCshow
 LTb
 1.000 UP
-1.000 UL
+0.500 UL
 LTb
 1.000 UP
-1.000 UL
+0.500 UL
 LT0
-927 563 Pls
-968 841 Pls
-1117 983 Pls
-1349 1082 Pls
-1616 1159 Pls
-1694 1222 Pls
-1709 1277 Pls
-1725 1325 Pls
-1860 1368 Pls
-1905 1407 Pls
-1981 1443 Pls
-2011 1477 Pls
-2022 1508 Pls
-2024 1537 Pls
-2038 1565 Pls
-2060 1591 Pls
-2096 1616 Pls
-2169 1640 Pls
-2191 1662 Pls
-2196 1684 Pls
-2210 1706 Pls
-2212 1726 Pls
-2230 1746 Pls
-2232 1765 Pls
-2255 1783 Pls
-2282 1801 Pls
-2291 1819 Pls
-2305 1836 Pls
-2321 1853 Pls
-2398 1869 Pls
-2399 1885 Pls
-2439 1900 Pls
-2441 1916 Pls
-2457 1931 Pls
-2458 1945 Pls
-2461 1960 Pls
-2466 1974 Pls
-2480 1988 Pls
-2484 2001 Pls
-2535 2015 Pls
-2538 2028 Pls
-2571 2041 Pls
-2594 2054 Pls
-2657 2067 Pls
-2667 2079 Pls
-2671 2092 Pls
-2685 2104 Pls
-2699 2116 Pls
-2720 2128 Pls
-2801 2140 Pls
-2866 2151 Pls
-2875 2163 Pls
-2879 2174 Pls
-2925 2186 Pls
-2928 2197 Pls
-2938 2208 Pls
-2948 2219 Pls
-2975 2230 Pls
-2989 2241 Pls
-2998 2252 Pls
-3035 2262 Pls
-3052 2273 Pls
-3088 2283 Pls
-3157 2294 Pls
-3162 2304 Pls
-3196 2314 Pls
-3198 2325 Pls
-3202 2335 Pls
-3241 2345 Pls
-3254 2355 Pls
-3269 2365 Pls
-3273 2375 Pls
-3282 2385 Pls
-3304 2395 Pls
-3318 2405 Pls
-3329 2414 Pls
-3346 2424 Pls
-3374 2434 Pls
-3413 2444 Pls
-3417 2453 Pls
-3418 2463 Pls
-3426 2472 Pls
-3437 2482 Pls
-3452 2491 Pls
-3482 2501 Pls
-3492 2510 Pls
-3514 2520 Pls
-3553 2529 Pls
-3562 2539 Pls
-3578 2548 Pls
-3585 2557 Pls
-3600 2567 Pls
-3631 2576 Pls
-3651 2585 Pls
-3653 2595 Pls
-3660 2604 Pls
-3669 2613 Pls
-3677 2623 Pls
-3691 2632 Pls
-3700 2641 Pls
-3705 2651 Pls
-3728 2660 Pls
-3728 2669 Pls
-3754 2679 Pls
-3768 2688 Pls
-3781 2697 Pls
-3799 2707 Pls
-3805 2716 Pls
-3825 2725 Pls
-3825 2735 Pls
-3830 2744 Pls
-3866 2753 Pls
-3899 2763 Pls
-3905 2772 Pls
-3914 2782 Pls
-3918 2791 Pls
-3923 2801 Pls
-3977 2810 Pls
-4026 2820 Pls
-4035 2829 Pls
-4050 2839 Pls
-4054 2848 Pls
-4058 2858 Pls
-4084 2868 Pls
-4122 2878 Pls
-4124 2887 Pls
-4125 2897 Pls
-4131 2907 Pls
-4157 2917 Pls
-4158 2927 Pls
-4174 2937 Pls
-4174 2947 Pls
-4229 2957 Pls
-4242 2967 Pls
-4253 2978 Pls
-4303 2988 Pls
-4322 2998 Pls
-4356 3009 Pls
-4376 3019 Pls
-4392 3030 Pls
-4401 3040 Pls
-4405 3051 Pls
-4432 3062 Pls
-4441 3073 Pls
-4462 3084 Pls
-4483 3095 Pls
-4483 3106 Pls
-4487 3118 Pls
-4494 3129 Pls
-4512 3141 Pls
-4542 3152 Pls
-4553 3164 Pls
-4596 3176 Pls
-4605 3188 Pls
-4611 3200 Pls
-4623 3213 Pls
-4638 3225 Pls
-4661 3238 Pls
-4666 3251 Pls
-4670 3264 Pls
-4684 3277 Pls
-4688 3291 Pls
-4691 3304 Pls
-4756 3318 Pls
-4779 3332 Pls
-4787 3347 Pls
-4800 3361 Pls
-4854 3376 Pls
-4902 3392 Pls
-4949 3407 Pls
-4960 3423 Pls
-4977 3439 Pls
-5019 3456 Pls
-5060 3473 Pls
-5085 3491 Pls
-5122 3509 Pls
-5142 3527 Pls
-5159 3546 Pls
-5214 3566 Pls
-5280 3586 Pls
-5281 3608 Pls
-5281 3630 Pls
-5281 3652 Pls
-5363 3676 Pls
-5409 3701 Pls
-5472 3727 Pls
-5570 3755 Pls
-5606 3784 Pls
-5643 3815 Pls
-5651 3849 Pls
-5663 3885 Pls
-5724 3924 Pls
-5747 3967 Pls
-5797 4015 Pls
-5837 4070 Pls
-5925 4133 Pls
-6146 4210 Pls
-6265 4309 Pls
-6464 4451 Pls
-6555 4729 Pls
-1.000 UL
+899 543 Pls
+1303 575 Pls
+1509 689 Pls
+1652 867 Pls
+1764 1071 Pls
+1856 1131 Pls
+1936 1142 Pls
+2006 1155 Pls
+2068 1258 Pls
+2125 1292 Pls
+2177 1350 Pls
+2226 1374 Pls
+2271 1382 Pls
+2314 1384 Pls
+2354 1395 Pls
+2392 1411 Pls
+2428 1439 Pls
+2463 1495 Pls
+2496 1512 Pls
+2528 1516 Pls
+2558 1526 Pls
+2588 1527 Pls
+2617 1541 Pls
+2644 1543 Pls
+2671 1561 Pls
+2698 1582 Pls
+2723 1588 Pls
+2748 1599 Pls
+2772 1611 Pls
+2796 1670 Pls
+2819 1671 Pls
+2841 1701 Pls
+2864 1703 Pls
+2885 1715 Pls
+2906 1716 Pls
+2927 1718 Pls
+2948 1722 Pls
+2968 1733 Pls
+2988 1736 Pls
+3008 1775 Pls
+3027 1777 Pls
+3046 1803 Pls
+3064 1820 Pls
+3083 1869 Pls
+3101 1876 Pls
+3119 1879 Pls
+3137 1890 Pls
+3154 1901 Pls
+3172 1917 Pls
+3189 1979 Pls
+3206 2029 Pls
+3222 2036 Pls
+3239 2039 Pls
+3256 2074 Pls
+3272 2076 Pls
+3288 2084 Pls
+3304 2092 Pls
+3320 2112 Pls
+3336 2123 Pls
+3351 2130 Pls
+3367 2159 Pls
+3382 2171 Pls
+3397 2199 Pls
+3413 2252 Pls
+3428 2256 Pls
+3443 2282 Pls
+3457 2283 Pls
+3472 2286 Pls
+3487 2316 Pls
+3502 2326 Pls
+3516 2338 Pls
+3531 2340 Pls
+3545 2347 Pls
+3559 2364 Pls
+3574 2375 Pls
+3588 2384 Pls
+3602 2397 Pls
+3616 2418 Pls
+3630 2448 Pls
+3644 2451 Pls
+3658 2452 Pls
+3672 2457 Pls
+3686 2466 Pls
+3700 2478 Pls
+3713 2501 Pls
+3727 2509 Pls
+3741 2525 Pls
+3754 2555 Pls
+3768 2562 Pls
+3782 2574 Pls
+3795 2579 Pls
+3809 2591 Pls
+3823 2615 Pls
+3836 2631 Pls
+3850 2631 Pls
+3863 2637 Pls
+3877 2644 Pls
+3890 2650 Pls
+3904 2661 Pls
+3917 2668 Pls
+3931 2672 Pls
+3944 2689 Pls
+3958 2689 Pls
+3971 2709 Pls
+3985 2720 Pls
+3998 2730 Pls
+4012 2744 Pls
+4025 2748 Pls
+4039 2763 Pls
+4053 2763 Pls
+4066 2767 Pls
+4080 2795 Pls
+4093 2820 Pls
+4107 2825 Pls
+4121 2832 Pls
+4135 2835 Pls
+4148 2839 Pls
+4162 2880 Pls
+4176 2918 Pls
+4190 2924 Pls
+4204 2936 Pls
+4218 2939 Pls
+4232 2942 Pls
+4246 2962 Pls
+4260 2991 Pls
+4274 2992 Pls
+4289 2993 Pls
+4303 2998 Pls
+4317 3018 Pls
+4332 3019 Pls
+4346 3031 Pls
+4361 3031 Pls
+4376 3073 Pls
+4391 3083 Pls
+4405 3092 Pls
+4420 3130 Pls
+4435 3145 Pls
+4451 3170 Pls
+4466 3186 Pls
+4481 3198 Pls
+4497 3205 Pls
+4512 3208 Pls
+4528 3228 Pls
+4544 3235 Pls
+4560 3252 Pls
+4576 3268 Pls
+4592 3268 Pls
+4609 3271 Pls
+4626 3276 Pls
+4642 3290 Pls
+4659 3313 Pls
+4676 3322 Pls
+4694 3354 Pls
+4711 3361 Pls
+4729 3366 Pls
+4747 3375 Pls
+4765 3387 Pls
+4784 3404 Pls
+4802 3408 Pls
+4821 3411 Pls
+4840 3422 Pls
+4860 3425 Pls
+4880 3427 Pls
+4900 3477 Pls
+4921 3495 Pls
+4941 3501 Pls
+4963 3510 Pls
+4984 3552 Pls
+5007 3589 Pls
+5029 3624 Pls
+5052 3633 Pls
+5076 3646 Pls
+5100 3679 Pls
+5125 3710 Pls
+5150 3729 Pls
+5177 3757 Pls
+5204 3773 Pls
+5231 3786 Pls
+5260 3828 Pls
+5290 3878 Pls
+5320 3879 Pls
+5352 3879 Pls
+5385 3879 Pls
+5420 3942 Pls
+5456 3977 Pls
+5494 4026 Pls
+5534 4100 Pls
+5577 4128 Pls
+5622 4156 Pls
+5671 4162 Pls
+5723 4172 Pls
+5780 4218 Pls
+5842 4236 Pls
+5912 4274 Pls
+5992 4305 Pls
+6084 4373 Pls
+6196 4542 Pls
+6339 4633 Pls
+6545 4785 Pls
+6949 4855 Pls
+0.500 UL
 LTb
-546 4872 N
-546 420 L
-6416 0 V
-0 4452 V
--6416 0 V
+854 4872 N
+854 448 L
+6136 0 V
+0 4424 V
+-6136 0 V
 Z stroke
 1.000 UP
-1.000 UL
+0.500 UL
 LTb
+grestore % colour palette end
 stroke
 grestore
 end
