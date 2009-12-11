@@ -9,7 +9,7 @@ ancho = 0.03;		% Ancho de cada clase
 significacion = 0.05;	% Nivel de significacion para el test chi cuadrado
 
 % Cargamos las horas de llegadas.
-load llegadasregistro;
+load ../datos/llegadasregistro;
 n = length(llegadasregistro) - 1;
 
 % Calculamos los intervalos ENTRE llegadas.
@@ -42,7 +42,7 @@ inf = 1 - exp( -lambda_est * (t-dt/2));
 z = n * 5 * (sup - inf);
 
 % Mostramos el grafico y lo guardamos en formato eps
-__gnuplot_set__ terminal unknown;
+%  __gnuplot_set__ terminal unknown;
 hold on;
 bar(marcas, f);
 xlabel("Tiempos entre arribos al sistema (horas)");
@@ -50,15 +50,18 @@ ylabel("Cantidad de arribos al sistema (unidades)");
 title("Histograma de tiempos entre arribos al sistema");
 plot(t, z , ";Modelo;");
 hold off;
-__gnuplot_set__ encoding iso_8859_1;
-__gnuplot_set__ terminal postscript eps;
-__gnuplot_set__ output "histograma_llegadas.eps";
+
+%  TODO: Forma vieja de imprimir. Verificar si print -deps funciona bien.
+%  __gnuplot_set__ encoding iso_8859_1;
+%  __gnuplot_set__ terminal postscript eps;
+%  __gnuplot_set__ output "histograma_llegadas.eps";
 replot;
+print('-deps','histograma_llegadas.eps');
 
 
 %pause(10);
 
-closeplot;
+%  closeplot;
 
 % Calculamos el estadistico chi cuadrado
 chi_est = 0;
@@ -68,7 +71,9 @@ end
 chi_est
 
 % Calculamos el valor critico 
-chi_tabla = chisquare_inv(1 - significacion, clases - 2)
+%  chisquare_inv esta deprecada.
+%  chi_tabla = chisquare_inv(1 - significacion, clases - 2)
+chi_tabla = chi2inv(1 - significacion, clases - 2)
 
 % Imprimimos resultado del test
 if chi_est >= chi_tabla
@@ -82,16 +87,19 @@ quantil_muestra = sort(intervalos);
 quantil_teorico = (-1 / lambda_est) * log( 1 - (((1:n) - 0.5) / n));
 
 % Los graficamos
-__gnuplot_set__ terminal unknown;
+%  __gnuplot_set__ terminal unknown;
 plot(quantil_muestra, quantil_teorico, '@');
 xlabel("Cuantiles de la muestra");
 ylabel("Cuantiles del modelo teorico");
 title("Plot Q-Q de los tiempos entre arribos al sistema");
-__gnuplot_set__ encoding iso_8859_1;
-__gnuplot_set__ terminal postscript eps;
-__gnuplot_set__ output "plot_qq_llegadas.eps";
+%  TODO: Forma vieja de imprimir. Verificar si print -deps funciona bien.
+%  __gnuplot_set__ encoding iso_8859_1;
+%  __gnuplot_set__ terminal postscript eps;
+%  __gnuplot_set__ output "plot_qq_llegadas.eps";
 replot;
-closeplot;
+print('-deps','plot_qq_llegadas.eps');
+%  TODO: Forma vieja de imprimir. Verificar si print -deps funciona bien.
+%  closeplot;
 
 % Aplicamos el test KS.
 
@@ -100,7 +108,7 @@ llegadasregistro = (llegadasregistro - llegadasregistro(1)) / (llegadasregistro(
 n = length(llegadasregistro);
 
 % Genero un histograma
-gset terminal x11
+%  gset terminal x11
 hist(llegadasregistro, 10);
 [f marcas] = hist(llegadasregistro, clases);
 
@@ -114,5 +122,3 @@ end
 Dmas = max(F(2:(clases+1)) - marcas);
 Dmenos = max(marcas - F(1:clases));
 D = max(Dmas, Dmenos)
-
-
