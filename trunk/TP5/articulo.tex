@@ -2,6 +2,7 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[latin1]{inputenc}
 \usepackage[spanish]{babel}
+\spanishdecimal{.}
 \usepackage[dvips]{epsfig}
 \usepackage{graphicx}
 \usepackage{verbatim}
@@ -21,13 +22,13 @@ Villa Fernandez Santiago\\
 \begin{document}
 \maketitle
 
-\section*{Item a}
+\section*{Item A}
 
 \subsection*{Tiempo entre arribos}
 
 
 Para modelar el intervalo de tiempos entre arribos se cuenta con mediciones del
-horario en que los clientes llegaron al sistema. La regla de
+horario en que los clientes llegan al sistema. La regla de
 Sturges para la elecci\'on de la cantidad de intervalos de clase 
 aconseja utilizar $1 + \log_2 n$ intervalos, siendo $n$
 la cantidad de datos. De esta manera se obtiene que se requieren $7.644$ intervalos,
@@ -79,7 +80,7 @@ no provengan de una distribuci\'on exponencial.
 
 
 Debido a que los tests resultaron satisfactorios, se supone para las 
-simulaciones que los se encuentran distribuidos exponencialmente con media
+simulaciones que los datos se encuentran distribuidos exponencialmente con media
 $\lambda = 18.939$ [clientes/hora].
 
 
@@ -123,26 +124,75 @@ distribuci\'on normal. En la figura  ~\ref{fig:qqe3} se observa el plot Q-Q comp
 ambas distribuciones.
 
 
-\section*{\underline{Item b}}
-\section*{\underline{Item c}}
-%Indicar los tipos de eventos y el espacio de eventos
-Como se observ\'o anteriormente las colas involucradas son
-$S = \{R, E1, E3, OFT, PSF, E2, C\}$.\\
-Todas las colas del sistema se modelan con capacidad infinita y un
-comportamiento \textbf{FIFO} (\textit{first in- first out}), salvo la cola $E3$
-donde se considera que los clientes que todav\'ia no alcanzan a llenar el
-formulario, son desplazados un lugar hacia atras en dicha cola.\\
-Los eventos para cada cola del sistema son la llegada y la salida de un cliente.
-Utilizando subindices para nombrar los eventos de cada cola, el espacio de
-eventos ($E$) del sistema resulta:\\
-$$E = \{Ra , Rp , E1a , E1p , E3a , E3p , OFTa , OFTp , PSFa , PSFp , E2a , E2p , Ca , Cp \}$$\\
-Donde el sub\'indice \textit{a} indica la llegada de un cliente a la cola y el
-sub\'indice \textit{p} indica la partida de un cliente de la cola.
+\section*{Item B}
 
-\section*{\underline{Item d}}
-\section*{\underline{Item e}}
-\section*{\underline{Item f}}
-\section*{\underline{Item g}}
+Todas las colas del sistema se modelan con capacidad infinita y un
+comportamiento FIFO (\textit{first in- first out}), salvo la cola de la
+facilidad $E3$, donde se considera que los clientes que no han llenado el
+formulario son desplazados un lugar hacia atr\'as.
+
+
+Las colas involucradas son $Q = \{R, E1, E3, OFT, PSF, E2, C\}$.
+
+
+El estado del sistema puede ser completamente representado por la longitud
+de cada una de las colas y el estado de las facilidades, ya sea
+libre u ocupado. De esta forma, el espacio de estados resulta:
+
+\begin{equation*}
+\begin{split}
+S = & \{(x_{R}, x_{E1}, x_{E3}, x_{OFT}, x_{PSF}, x_{E2}, x_{C}, s_{R},
+s_{E1}, s_{E3}, s_{OFT}, s_{PSF}, s_{E2}, s_{C1}, s_{C2}, s_{C3}) / \\
+& 
+ x_{R}, x_{E1}, x_{E3}, x_{OFT}, x_{PSF}, x_{E2}, x_{C} = 0, 1, \dots \wedge \\
+&
+ s_{R},
+s_{E1}, s_{E3}, s_{OFT}, s_{PSF}, s_{E2}, s_{C1}, s_{C2}, s_{C3} \in \{B, F\}\}
+\end{split}
+\end{equation*}
+
+siendo $B$ el estado ocupado y $F$ el estado libre. 
+Se considera tambi\'en que hay una \'unica cola para pagar, que cuenta con 3 
+facilidades.
+
+\section*{Item C}
+
+Los eventos involucrados son la llegada y la salida de clientes a cada una 
+de las colas. Adem\'as, debe considerarse cuando una facilidad comienza a 
+atender a un cliente y cuando la misma finaliza el servicio.
+
+El conjunto de eventos del sistema resulta entonces:
+
+\begin{equation*}
+\begin{split}
+E = & \{R_a, R_d, E1_a, E1_d, E3_a, E3_d, OFT_a, OFT_d, PSF_a, PSF_d,
+ E2_a, E2_d, C_a, C_d, \\
+ & r_b, r_f, e1_b, e1_f, e3_b, e3_f, oft_b, oft_f,
+ psf_b, psf_f, e2_b, e2_f, c1_b, c1_f, c2_b, c2_f, c3_b, c3_f \}
+\end{split}
+\end{equation*}
+
+
+donde el sub\'indice $a$ indica la llegada de un cliente a la cola y el
+sub\'indice $d$ indica la partida de un cliente de la cola.
+
+
+Los eventos en min\'usculas se refieren a los cambios de estado de cada facilidad.
+En el caso de empezar a atender un cliente se utiliza el sub\'indice $b$ y 
+al finalizar de brindar el servicio el sub\'indice $f$.
+
+
+Se considera que el tiempo de traslado de un cliente que ha sido atendido en
+alguna facilidad hacia la pr\'oxima cola es nulo. Por lo tanto, resulta factible
+simplificar el conjunto de eventos amalgamando aquellos que son
+consecutivos sin bifurcaci\'{o}n posible. Por ejemplo, un cliente que finaliza
+de abonar su recibo y se dirige a la estaci\'n E2 para retirar su registro
+renovado.
+
+\section*{Item D}
+\section*{Item E}
+\section*{Item F}
+\section*{Item G}
 
 
 
