@@ -3,12 +3,14 @@
 \usepackage[latin1]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[dvips]{epsfig}
-\usepackage{graphics}
+\usepackage{graphicx}
 \usepackage{verbatim}
-\usepackage{moreverb}
-\title{Trabajo Pr\'actico Final de Simulaci\'on de Sistemas(72.25)}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
 
-%\author[Abramowicz P., Gomez Vidal M., Sessa C., Villa Fernandez S.]{
+\title{Trabajo Pr\'actico Final\\ Simulaci\'on de Sistemas\\ (72.25)}
+
 \author{
 Abramowicz Pablo\\
 Gomez Vidal Maximiliano\\
@@ -19,46 +21,107 @@ Villa Fernandez Santiago\\
 \begin{document}
 \maketitle
 
-\section*{\underline{Item a}}
-\subsection{Modelo de intervalo de tiempos entre arribos}
-Para modelar el intervalo de tiempos entre arribos se tienen mediciones del
-horario en que los clientes llegaron al sistema. Utilizando la regla de
-Sturges para la elecci\'on del n\'umero intervalos de clase para los datos
-medidos, la misma aconseja utilizar $1 + \log_2 n$ intervalos. Siendo $n$
-la cantidad de datos, se obtiene que se requieren $7.644$ intervalos
-utilizando en este caso $8$. Se puede observar en el histograma con los
-intervalos de tiempos entre arribos (Figura x) que los datos tienden a estar
-distribuidos exponencialmente. Se realiza un test de bondad de ajuste
-$\chi^2$ estimando previamente el valor $\lambda$ de la distribuci\'on
-obteni\'endose un valor de $\lambda = 18.939$ clientes/hora, resultado
-una anomal\'ia cuadr\'atica media de $\chi_0^2 = 11.943$. Considerando
-el valor cr\'itico por tablas para $6$ grados de libertad, con un nivel
-de significaci\'on de 5\% es $\chi_{6,0.05}^2 = 12.592$, no se refuta
-la hip\'otesis de que los datos provengan de una distribuci\'on exponencial.
-Se realiza un Plot Q-Q para lograr confirmaci\'on visual (Figura x)
-observando que, sobre todo para valores chicos, los cuantiles se encuentran
-alineados sobre una recta de pendiente $1$. Realizando un test de uniformidad
-Kolmogorov-Smirnov sobre los tiempos de arribos se obtiene un estad\'istico
-de $D =  0.12686$ para los datos agrupados en $8$ clases. Considerando el
-valor cr\'itico para un nivel de significaci\'on de $5\%$ es $D_{7, 0.05} = $,
-mayor que $D$, el test es satisfactorio. Concluyendo que los tiempos entre
-arribos para la simulaci\'on est\'an distribuidos exponencialmente con media
-$18.939$ clientes/hora.
+\section*{Item a}
 
-\subsection{Modelo de intervalo de tiempo de atenci\'on de la estaci\'on E3}
-Para el modelo de intervalo de tiempo de atenci\'on de la estaci\'on E3 se
-utiliza nuevamente la regla de Sturges para la elecci\'on del n\'umeros de
-intervalos de clase obtiendose $8.644$ y utilizando la regla de Nu\~nez
-se decide utilizar $8$ intervalos de clase.
-Observando el histograma de tiempo de atenci\'on de la estaci\'on (Figura x)
-se intuye claramente que los datos tienden a estar distribuidos normalmente.
-Dada esta consideraci\'on se estiman la media, $\mu = 1.9952 $, y la varianza,
-$\sigma^2 = 0.00832$, de forma de realizar el test de bondad de ajuste
-$\chi^2$. El valor resultante de la anomal\'ia cuadr\'atica media es
-$\chi_0^2 = 4.7492$ resultando menor que el cr\'itico por tablas para $5$
-grados de libertad con un nivel de significaci\'on del $5\%$, cuyo valor es
-$\chi_{5,0.05}^2 = 11.07$, concluyendo que no se refuta la hip\'otesis de que
-los datos provengan de una distribuci\'on normal.
+\subsection*{Tiempo entre arribos}
+
+
+Para modelar el intervalo de tiempos entre arribos se cuenta con mediciones del
+horario en que los clientes llegaron al sistema. La regla de
+Sturges para la elecci\'on de la cantidad de intervalos de clase 
+aconseja utilizar $1 + \log_2 n$ intervalos, siendo $n$
+la cantidad de datos. De esta manera se obtiene que se requieren $7.644$ intervalos,
+utilizando en este caso $8$. 
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/histograma_llegadas.eps}
+\caption{Tiempo entre arribos al sistema}
+\label{fig:tiempoentrearribos}
+\end{figure*}
+
+
+En la figura ~\ref{fig:tiempoentrearribos} se observa el histograma con los
+intervalos de tiempo entre arribos. Se percibe que los datos tienden a estar
+distribuidos en forma exponencial. Se realiza un test de bondad de ajuste
+$\chi^2$ para comprobarlo.
+
+
+Se estima el valor medio de la muestra obteni\'endose 
+$\lambda = 18.939$ [clientes/hora],
+con un estad\'istico chi-cuadrado de valor $\chi_0^2 = 11.943$. 
+El valor cr\'itico para $7$ grados de libertad con un nivel
+de significaci\'on del $5\%$ resulta $\chi_{7,0.05}^2 = 14.067$. Por lo tanto,
+no puede refutarse la hip\'otesis de que los datos provengan de una distribuci\'on 
+exponencial.
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_qq_llegadas.eps}
+\caption{Plot Q-Q del tiempo entre arribos al sistema}
+\label{fig:qqarribos}
+\end{figure*}
+
+
+En la figura ~\ref{fig:qqarribos} se muestra un plot Q-Q. Se visualiza que los cuantiles se encuentran
+alineados sobre una recta de pendiente unitaria, en especial para valores
+peque\~nos. De este an\'alisis se desprende que la distribuci\'on de la
+muestra es muy similar a la exponencial.
+
+
+Realizando un test de uniformidad
+Kolmogorov-Smirnov sobre los tiempos de arribos se obtiene un estad\'istico
+de $D = 0.12686$, considerando nuevamente los datos agrupados en $8$ clases. 
+El valor cr\'itico para un nivel de significaci\'on del $5\%$ 
+se obtiene de tabla y resulta $D_{7, 0.05} = 0.4361$.
+Puesto que $D_{7,0.05} > D$ no se puede afirmar que los datos
+no provengan de una distribuci\'on exponencial. 
+
+
+Debido a que los tests resultaron satisfactorios, se supone para las 
+simulaciones que los se encuentran distribuidos exponencialmente con media
+$\lambda = 18.939$ [clientes/hora].
+
+
+\subsection*{Tiempo de atenci\'on de la estaci\'on E3}
+
+
+El resultado de aplicar la regla de Sturges indica utilizar $8.644$ intervalos
+de clase. Empleando adem\'as la regla de Nu\~nez se opta por utilizar $8$ 
+intervalos de clase.
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/histograma_e3.eps}
+\caption{Tiempo de atenci\'on de la estaci\'on E3}
+\label{fig:tiempoatencione3}
+\end{figure*}
+
+
+El histograma de tiempo de atenci\'on dado en la figura 
+ ~\ref{fig:tiempoatencione3}
+muestra que los datos presentan una distribuci\'on aproximadamente
+normal.
+
+La estimaci\'on de la media resulta $\mu = 1.9952 $ y la varianza tiene un valor
+$\sigma^2 = 0.00832$. Se realiza el test de bondad de ajuste $\chi^2$ para
+analizar si es razonable suponer que la distribuci\'on observada es normal.
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_qq_e3.eps}
+\caption{Plot Q-Q del tiempo de atenci\'on en la facilidad E3}
+\label{fig:qqe3}
+\end{figure*}
+
+
+El valor del estad\'istico es $\chi_0^2 = 4.7492$, resultando menor que el valor 
+cr\'itico obtenido por tablas para $7$ grados de libertad con un nivel de 
+significaci\'on del $5\%$, cuyo valor es $\chi_{7,0.05}^2 = 14.067$. En
+consecuencia, no se refuta la hip\'otesis de que los datos provengan de una 
+distribuci\'on normal. En la figura  ~\ref{fig:qqe3} se observa el plot Q-Q comparando
+ambas distribuciones.
+
 
 \section*{\underline{Item b}}
 \section*{\underline{Item c}}

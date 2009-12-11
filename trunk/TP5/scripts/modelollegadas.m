@@ -18,7 +18,7 @@ for i=1:n
 end
 
 % Armamos un histograma
-marcas = (0:clases) * ancho + ancho/2;
+marcas = (0:clases)*ancho + ancho/2;
 [f marcas] = hist(intervalos, marcas);
 f
 marcas
@@ -44,15 +44,14 @@ z = n * 5 * (sup - inf);
 % Mostramos el grafico y lo guardamos en formato eps
 __gnuplot_set__ terminal unknown;
 hold on;
-bar(marcas, f);
-xlabel("Tiempos entre arribos al sistema (horas)");
-ylabel("Cantidad de arribos al sistema (unidades)");
-title("Histograma de tiempos entre arribos al sistema");
+bar(marcas, f, 'FaceColor', 'none');
+xlabel("Tiempos entre arribos al sistema [horas]");
+ylabel("Arribos al sistema");
 plot(t, z , ";Modelo;");
 hold off;
 __gnuplot_set__ encoding iso_8859_1;
 __gnuplot_set__ terminal postscript eps;
-__gnuplot_set__ output "histograma_llegadas.eps";
+print('-deps', 'histograma_llegadas.eps', '-mono');
 replot;
 
 
@@ -86,10 +85,9 @@ __gnuplot_set__ terminal unknown;
 plot(quantil_muestra, quantil_teorico, '@');
 xlabel("Cuantiles de la muestra");
 ylabel("Cuantiles del modelo teorico");
-title("Plot Q-Q de los tiempos entre arribos al sistema");
 __gnuplot_set__ encoding iso_8859_1;
 __gnuplot_set__ terminal postscript eps;
-__gnuplot_set__ output "plot_qq_llegadas.eps";
+print('-deps', 'plot_qq_llegadas.eps', '-mono');
 replot;
 closeplot;
 
@@ -100,7 +98,7 @@ llegadasregistro = (llegadasregistro - llegadasregistro(1)) / (llegadasregistro(
 n = length(llegadasregistro);
 
 % Genero un histograma
-gset terminal x11
+%gset terminal x11
 hist(llegadasregistro, 10);
 [f marcas] = hist(llegadasregistro, clases);
 
