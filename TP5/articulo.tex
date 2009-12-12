@@ -190,10 +190,170 @@ de abonar su recibo y se dirige a la estaci\'n E2 para retirar su registro
 renovado.
 
 \section*{Item D}
+
+%TODO sacar la referencia al censo de aca y armar una nota al pie o algo de eso
+En primer lugar se establecen las probabilidades de transici\'on entre estados.
+Se supone que $5\%$ de las personas que se acercan a la recepci\'on solamente
+desean obtener el instructivo. El resto desea efectuar el tr\'amite del
+registro.
+
+
+Se establece que el tiempo que tarda un cliente en llenar el formulario est\'a
+distribuido de manera uniforme entre $3$ y $5$ minutos.
+
+
+El $10\%$ de los que est\'an haciendo el tr\'amite
+desean obtener el registro profesional, por lo que deber\'an presentarse
+al test psico-f\'isico al igual que las personas mayores de $70$ a\~nos
+(alrededor del $8\%$ de acuerdo al censo del $2000$).
+Se considera que el $2\%$ desaprueba el test oftalmol\'ogico
+o el test psico-f\'isico. 
+
+
+El horario de atenci\'on los d\'ias h\'abiles es de $9.00$ a $13.00$. 
+Inicialmente todas las colas se encuentran vac\'ias.
+ 
+
+Para la simulaci\'on se utiliza la funci\'on \textit{rand} de 
+\textit{GNU Octave 3.0.5}. La misma implementa el generador de n\'umeros
+pseudo-aleatorios conocido como \textit{Twister de Mersenne}. Este generador
+tiene un per\'iodo de $2^{19937} - 1$. Como semilla se define el n\'umero
+$31337$.
+
+
+De la figura  ~\ref{fig:colaR} a  ~\ref{fig:colaC} se observan las longitudes
+de cada cola en funci\'on del tiempo. Como la velocidad de atenci\'on en las
+facilidades R, E1 y C resulta bastante mayor que el ritmo al que llegan
+clientes, las mismas permanecen ociosas la mayor parte de la jornada.
+Se observan cuellos de botella en E2 y el test oftalmol\'ogico.
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_longitud_R.eps}
+\caption{Longitud de la cola R}
+\label{fig:colaR}
+\end{figure*}
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_longitud_E1.eps}
+\caption{Longitud de la cola E1}
+\label{fig:colaE1}
+\end{figure*}
+
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_longitud_E2.eps}
+\caption{Longitud de la cola E2}
+\label{fig:colaE2}
+\end{figure*}
+
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_longitud_E3.eps}
+\caption{Longitud de la cola E3}
+\label{fig:colaE3}
+\end{figure*}
+
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_longitud_OFT.eps}
+\caption{Longitud de la cola OFT}
+\label{fig:colaOFT}
+\end{figure*}
+
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_longitud_PSF.eps}
+\caption{Longitud de la cola PSF}
+\label{fig:colaPSF}
+\end{figure*}
+
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_longitud_C.eps}
+\caption{Longitud de la cola C}
+\label{fig:colaC}
+\end{figure*}
+
 \section*{Item E}
+
+%
+% TODO
+% TODO
+% TODO
+% Conseguir el valor teorico (?) y estimar el error que se comete.
+%
+
+%TODO no se por que lima la referencia... quedo un 1 hardcodeado
+Se realizan $10$ simulaciones independientes y se analiza el tiempo medio
+que un cliente permanece en el sistema. En la tabla $1$
+se muestran los resultados obtenidos en cada caso.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{cc} \hline \hline
+N\'umero de simulaci\'on & Tiempo medio [minutos] \\ \hline
+\texttt{1}	& $220.08$ \\
+\texttt{2}	& $256.16$ \\
+\texttt{3}	& $276.85$ \\
+\texttt{4}	& $280.31$ \\
+\texttt{5}	& $238.99$ \\
+\texttt{6}	& $277.39$ \\
+\texttt{7}	& $237.27$ \\
+\texttt{8}	& $291.55$ \\
+\texttt{9}	& $162.37$ \\
+\texttt{10}	& $223.36$ \\
+\hline \hline
+\end{tabular}
+\end{center}
+\label{tab:tiemposmedios}
+\vspace{4pt}
+\caption{Tiempo medio de un cliente en el sistema para 10 simulaciones
+independientes.}
+\end{table}
+
 \section*{Item F}
+
+En la figura ~\ref{fig:probac3} se muestra el tiempo medio de un cliente
+en el sistema de acuerdo a la probabilidad de que la caja C3 se encuentre
+operativa. Se observa que no se presentan grandes cambios en el tiempo medio.
+Esto se debe a que la caja C3 est\'a libre la mayor parte del tiempo, puesto
+que la tasa de llegada de clientes resulta inferior a la velocidad de atenci\'on
+de las 3 cajas. En la figura ~\ref{fig:operativac3} se muestra este fen\'omeno.
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_probabilidad_c3.eps}
+\caption{Tiempo medio de un cliente en el sistema en funci\'on de la probabilidad
+de que la caja C3 est\'e operativa}
+\label{fig:probac3}
+\end{figure*}
+
+
+\begin{figure*}[hp]
+\centering
+\includegraphics{graficos/plot_operatividad_c3.eps}
+\caption{Estado de la caja C3 cuando se encuentra operativa durante toda la 
+jornada}
+\label{fig:operativac3}
+\end{figure*}
+
 \section*{Item G}
 
+Se desea computar la probabilidad $p$ de que el tiempo medio de espera en la cola
+OFT sea mayor a $5$ minutos. La estaci\'on E3 tarda $3.5$ minutos en promedio
+para atender a un cliente.
+
+Realizando 50 iteraciones con el m\'etodo de Montecarlo y fijando
+como criterio de detenci\'on una variaci\'on menor a $0.000001$ entre dos iteraciones
+sucesivas se obtiene $p = 0.7226 \pm 0.0599$ con un nivel de significaci\'on
+del $5\%$. 
 
 
 \end{document}
