@@ -8,7 +8,7 @@ clases = 8		% Cantidad de intervalos de clase
 significacion = 0.05	% Nivel de significacion
 
 % Cargamos las horas de llegadas.
-load e3registro;
+load ../datos/e3registro;
 n = length(e3registro);
 
 % Armamos un histograma.  En x quedan las marcas de clase, y en f
@@ -79,4 +79,26 @@ __gnuplot_set__ terminal postscript eps;
 __gnuplot_set__ output "plot_qq_e3.eps";
 replot;
 closeplot;
+
+% Aplicamos el test KS.
+
+% Normalizo los datos en el intervalo (0, 1)
+llegadasregistro = (e3registro - e3registro(1)) / (e3registro(length(e3registro)) - e3registro(1));
+n = length(e3registro);
+
+% Genero un histograma
+%gset terminal x11
+hist(e3registro, 10);
+[f marcas] = hist(e3registro, clases);
+
+% Computo los estadisticos
+f = f / n;
+F(1) = 0;
+for k =1:clases
+    F(k+1) = sum(f(1:k));
+end
+
+Dmas = max(F(2:(clases+1)) - marcas);
+Dmenos = max(marcas - F(1:clases));
+D = max(Dmas, Dmenos)
 
