@@ -123,7 +123,6 @@ consecuencia, no se refuta la hip\'otesis de que los datos provengan de una
 distribuci\'on normal. En la figura  ~\ref{fig:qqe3} se observa el plot Q-Q comparando
 ambas distribuciones.
 
-
 \section*{Item B}
 
 Todas las colas del sistema se modelan con capacidad infinita y un
@@ -282,33 +281,22 @@ Se observan cuellos de botella en E2 y el test oftalmol\'ogico.
 \end{figure*}
 
 \section*{Item E}
-
-%
-% TODO
-% TODO
-% TODO
-% Conseguir el valor teorico (?) y estimar el error que se comete.
-%
-
-%TODO no se por que lima la referencia... quedo un 1 hardcodeado
-Se realizan $10$ simulaciones independientes y se analiza el tiempo medio
-que un cliente permanece en el sistema. En el cuadro $1$
-se muestran los resultados obtenidos en cada caso.
-
+Se realizan $10$ simulaciones independientes, utilizando para cada una el metodo de montecarlo con aproximadamente $1000$ iteraciones cada una.
+En la tabla $1$ se presenta la estimaci\'on de los tiempos medios junto con sus varianzas e intervalos de confianza ($\alpha = 0.01$).\\
 \begin{table}
 \begin{center}
-\begin{tabular}{cc} \hline \hline
-N\'umero de simulaci\'on & Tiempo medio [minutos] \\ \hline
-\texttt{1}	& $220.08$ \\
-\texttt{2}	& $256.16$ \\
-\texttt{3}	& $276.85$ \\
-\texttt{4}	& $280.31$ \\
-\texttt{5}	& $238.99$ \\
-\texttt{6}	& $277.39$ \\
-\texttt{7}	& $237.27$ \\
-\texttt{8}	& $291.55$ \\
-\texttt{9}	& $162.37$ \\
-\texttt{10}	& $223.36$ \\
+\begin{tabular}{cccc} \hline \hline
+N\'umero de simulaci\'on & Tiempo medio [minutos] & Varianza & Intervalo de confianza\\ \hline
+\texttt{1}	& $276.62$ & $3991.30$ & $\pm3.92$\\
+\texttt{2}	& $275.69$ & $3946.31$ & $\pm3.89$\\
+\texttt{3}	& $275.68$ & $3910.77$ & $\pm3.88$\\
+\texttt{4}	& $275.48$ & $3863.30$ & $\pm3.85$\\
+\texttt{5}	& $275.31$ & $3928.56$ & $\pm3.88$\\
+\texttt{6}	& $275.76$ & $3937.04$ & $\pm3.89$\\
+\texttt{7}	& $275.88$ & $3954.88$ & $\pm3.90$\\
+\texttt{8}	& $275.82$ & $3940.23$ & $\pm3.89$\\
+\texttt{9}	& $276.09$ & $3943.13$ & $\pm3.89$\\
+\texttt{10}	& $276.22$ & $3924.34$ & $\pm3.88$\\
 \hline \hline
 \end{tabular}
 \end{center}
